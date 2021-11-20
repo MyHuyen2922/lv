@@ -1,0 +1,19 @@
+
+.cart{
+    height: 35px;
+    width: 35px;
+}
+#textsearch{
+    position: absolute;
+}
+#search{
+    position: absolute;
+    margin-left: 350px;
+}
+#br{
+    background-color: #FBEFF8;
+}
+.a{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

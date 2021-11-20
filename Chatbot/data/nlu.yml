@@ -1,0 +1,580 @@
+version: "2.0"
+
+nlu:
+- intent: give_name
+  examples: |
+    - [Anh](cust_sex) là [Thắng](cust_name)
+    - [Chị](cust_sex) là [Vân](cust_name)
+    - [Chú](cust_sex) là [Hận](cust_name)
+    - [Cô](cust_sex) là [Nhanh](cust_name)
+    - [Dì](cust_sex) là [Tím](cust_name)
+    - [Em](cust_sex) là [Hồng](cust_name)
+    - [Anh](cust_sex) là [Thông](cust_name)
+
+- intent: greet
+  examples: |
+    - Xin chào
+    - alo
+    - hello
+    - hi
+    - Chào buổi sáng
+    - Chào buổi trưa
+    - Chào buổi tối
+    - let's go
+    - mình có vài câu hỏi
+    - chào
+    - có ai giúp mình không
+    - tui cần giúp đỡ
+    - tui cần tư vấn
+    - tui muốn hỏi
+
+- intent: goodbye
+  examples: |
+    - Tạm biệt
+    - Gặp lại sau
+    - Chúc ngủ ngon
+    - bye
+    - goodbye
+    - bye bye
+    - by
+
+- intent: thanks
+  examples: |
+    - chuẩn
+    - hay
+    - siêu
+    - tuyệt
+    - cảm ơn
+    - thanks
+    - thank you 
+    - ok
+    - cảm ơn em 
+    - cám ơn
+    - cảm ơn nhé
+    - cảm ơn ad
+    - cám ơn ad
+
+- intent: func_list
+  examples: |
+    - bạn có thể làm được những gì
+    - bạn giúp được gì nào
+    - chức năng của bạn là gì
+    - bạn giỏi nhất làm gì
+    - lĩnh vực nào bạn giỏi nhất
+
+- intent: name
+  examples: |
+    - tên gì
+    - cho mình hỏi quán tên gì
+    - cho mình hỏi cửa hàng tên gì
+    - tên quán
+    - tên cửa hàng
+    - cửa hàng tên gì
+    - cửa hàng tên dì
+    - quán tên gì
+    - cửa hàng tên gì
+    - quán tên dì
+    - cửa hàng tên dì
+
+- intent: name_bot
+  examples: |
+    - tên
+    - tên bot 
+    - bot tên dì 
+    - bot tên gì 
+    - tên bạn 
+    - bạn tên gì 
+    - cho tôi hỏi tên của bot 
+    - cho tui hỏi tên của bot 
+    - cho tui hỏi tên bot 
+    - cho mình hỏi bot tên gì
+    - cho mình hỏi tên bot 
+    - cho mình hỏi tên của bot 
+    - tên bot là gì
+    - tên của bạn là gì
+    - bạn tên?
+    - bạn tên ?
+    - bạn tên 
+
+- intent: age
+  examples: |
+    - tuổi
+    - tuổi bot 
+    - bot tuổi bao nhiêu 
+    - bot bao nhiêu tuổi 
+    - tuổi bạn 
+    - bạn bao nhiêu tuổi
+    - bạn bao nhiêu tuổi?
+    - cho tôi hỏi tuổi của bot 
+    - cho tui hỏi tuổi của bot 
+    - cho tui hỏi tuổi bot 
+    - cho mình hỏi bot bao nhiêu tuổi
+    - cho mình hỏi tuổi bot 
+    - cho minh hỏi tuổi
+    - cho mình hỏi tuổi của bot
+    - bạn tuổi 
+
+- intent: open_store
+  examples: |
+    - quán mấy giờ mở cửa
+    - cửa hàng mấy giờ mở cửa 
+    - cửa hàng mấy giờ mở cửa vậy
+    - cửa hàng mấy giờ mở cửa vậy ạ
+    - quán mấy giờ mở cửa vậy
+    - quán mấy giờ mở cửa vậy ạ
+    - mở cửa?
+    - mở cửa
+    - mở
+    - mở?
+    - quán mấy giờ mở cửa?
+    - cửa hàng mấy giờ mở cửa? 
+    - cửa hàng mấy giờ mở cửa vậy?
+    - cửa hàng mấy giờ mở cửa vậy ạ?
+    - quán mấy giờ mở cửa vậy?
+    - quán mấy giờ mở cửa vậy ạ?
+    - quán mấy giờ đóng  cửa
+    - cửa hàng mấy giờ đóng  cửa 
+    - cửa hàng mấy giờ đóng  cửa vậy
+    - cửa hàng mấy giờ đóng  cửa vậy ạ
+    - quán mấy giờ đóng  cửa vậy
+    - quán mấy giờ đóng  cửa vậy ạ
+    - đóng cửa?
+    - đóng cửa
+    - đóng 
+
+- intent: order
+  examples: |
+    - đặt
+    - đặt món sao 
+    - đặt bánh sao  
+    - đặt trà sữa sao 
+    - làm sao để mua 
+    - mua sao 
+    - đặt sao 
+    - đặt như thế nào 
+    - mua như thế nào
+    - chỉ cách mua
+    - chỉ cách đặt 
+    - em có thể mua bánh như thế nào
+    - đặt món như thế nào
+    - đặt món
+    - làm sao để đặt món
+    - yêu cầu khi đặt Món
+    - mua món sao
+    - cho hỏi làm thế nào để đặt Món
+    - không có tài khoản thì đặt món được không
+
+- intent: discount
+  examples: |
+    - khuyến mãi
+    - chương trình khuyến Mãi
+    - có voucher khuyễn mãi không
+    - khuyến mãi như thế nào
+    - khuyến mãi ntn 
+    - km
+    - có voucher km k 
+    - có voucher khuyến mãi k
+    - khuyến mãi như thế nào ạ
+
+- intent: money
+  examples: |
+    - tiền
+    - tính tiền
+    - tính tiền sao
+    - trả tiền sao 
+    - tính tiền như thế nào 
+    - tính tiền như thế nào vậy ạ 
+    - trả tiền như thế nào vậy 
+    - trả tiền như thế nào ạ
+    - hình thức thanh toán 
+    - thanh toán sao ạ 
+    - thanh toán sao 
+    - thanh toán như thế nào 
+    - thanh toán đơn hàng như thế nào
+    - thanh toán như thế nào vậy ạ
+
+- intent: ship
+  examples: |
+    - có ship ngoài tỉnh Cần thơ không ạ
+    - ship sao 
+    - ship 
+    - ship Ninh Kiều không
+    - có ship ngoài tỉnh không ạ
+    - ship Ô Môn không
+    - ship Bình Thủy không
+    - ship Thốt không
+    - ship cái răng không
+
+- intent: fee_ship
+  examples: |
+    - phí ship
+    - phí ship tính sao ạ
+    - phí ship tính như thế nào 
+    - tiền ship bao nhiêu 
+    - phí ship bao nhiêu
+    - tiền ship như thế nào 
+    - cho em hỏi tiền ship tính sao
+    - cho em hỏi tiền ship tính như thế nào 
+
+- intent: nk_fee_ship
+  examples: |
+    - phí ship quận Ninh Kiều bao nhiêu
+    - quận Ninh Kiều bao nhiêu
+    - ninh kiều
+
+- intent: bt_fee_ship
+  examples: |
+    - phí ship quận Bình Thủy bao nhiêu
+    - quận Bình Thủy bao nhiêu
+    - bình thủy
+
+- intent: om_fee_ship
+  examples: |
+    - phí ship quận Ô Môn bao nhiêu
+    - quận ô môn bao nhiêu
+    - ô môn
+
+- intent: cr_fee_ship
+  examples: |
+    - phí ship quận Cái Răng bao nhiêu
+    - quận Cái Răng bao nhiêu
+    - cái răng
+
+- intent: tn_fee_ship
+  examples: | 
+    - thốt nốt
+    - phí ship quận Thốt Nốt bao nhiêu
+    - quận Thốt Nốt bao nhiêu
+
+- intent: bestselling
+  examples: | 
+    - món bán chạy
+    - bán chạy
+    - chạy 
+    - cho em hỏi món bán chạy nhất 
+    - món bán chạy nhất là món nào  
+    - cho hỏi món bán chạy nhất
+    - món được mua nhiều
+    - món được yêu thích nhất
+    - món ngon nhất
+    - món được ưa chuộng
+    - món được mua nhiều nhất
+    - mua nhiều nhất
+
+- intent: address
+  examples: | 
+    - địa chỉ
+    - địa chỉ quán ở đâu ạ
+    - địa chỉ nằm ở đường nào
+    - quán ở đâu
+    - cửa hàng nằm ở đâu
+    - đường đi lại quán
+    - đi đường nào lại quán
+    - địa chỉ cụ thể
+
+- intent: take_away
+  examples: | 
+    - quán có bán mang về không
+    - mang về 
+    - bán mang về
+    - ngồi tại cửa Hàng
+    - ngồi tại chỗ
+    - hình thức bán
+    - tại chỗ
+    - ngồi lại
+    - không gian quán
+    - có ngồi học bài được không 
+
+- intent: topping
+  examples: | 
+    - trà sữa có topping gì
+    - topping
+    - trà sữa có mấy loại topping
+    - loại topping
+    - có mấy loại topping
+
+- intent: topping_cake
+  examples: |
+    - bánh ngọt có topping không
+    - topping bánh Ngọt
+    - topping bánh 
+    - bánh có topping không
+    - bánh có bao nhiêu loại topping
+    - bánh có topping gì
+    - bánh topping
+
+- intent: add_topping
+  examples: |
+    - có thể gọi topping thêm không
+    - thêm topping
+    - mua thêm topping như thế nào
+    - gọi topping thêm được không
+    - topping có bán riêng Không
+    - có thể mua thêm topping không
+    - tôi muốn đặt thêm topping 
+    - mua topping thêm
+
+- intent: receive
+  examples: |
+    - hình thức nhận Món
+    - nhận món
+    - có ship Không
+    - nhận món như thế nào 
+    - lại quán lấy hay sao ạ
+    - có cần lại quán lấy Không
+    - có ship tận nơi không
+
+- intent: phone
+  examples: |
+    - sdt
+    - số điện thoại
+    - cho em xin sdt liên hệ
+    - liên hệ 
+    - điện thoại
+    - tôi có thể gọi cho ai
+
+- intent: email
+  examples: |
+    - email
+    - liên hệ qua email
+    - cho em xin email liên hệ
+    - liên hệ 
+    - tôi xin email
+    
+- intent: price_high
+  examples: |
+    - giá cao nhất
+    - cao nhất
+    - cho em hỏi món giá cao nhất
+    - món mắc nhất
+    - món đắt nhất
+    - ở đây món nào đắt nhất ạ
+
+- intent: price_high_cake
+  examples: |
+    - bánh có giá cao nhất
+    - bánh giá cao nhất
+    - cho em hỏi món bánh giá cao nhất
+    - món bánh mắc nhất
+    - món bánh đắt nhất
+    - ở đây món bánh nào đắt nhất ạ
+
+- intent: price_high_milk
+  examples: |
+    - trà sữa có giá cao nhất
+    - trà sữa giá cao nhất
+    - cho em hỏi trà sữa giá cao nhất
+    - món trà sữa mắc nhất
+    - món trà sữa đắt nhất
+    - ở đây món trà sữa nào đắt nhất ạ
+    - nước mắc nhất
+    - nước đắt nhất
+    - thức uống đắt nhất
+    - thức uống mắc nhất
+
+- intent: price_low
+  examples: |
+    - giá thấp nhất
+    - thấp nhất
+    - cho em hỏi món giá thấp nhất
+    - món rẻ nhất
+    - ở đây món nào rẻ nhất ạ
+
+- intent: price_low_cake
+  examples: |
+    - giá bánh thấp nhất
+    - bánh giá thấp nhất
+    - cho em hỏi món bánh giá thấp nhất
+    - món bánh ngọt rẻ nhất
+    - ở đây món bánh ngọt nào rẻ nhất ạ
+
+- intent: price_low_milk
+  examples: |
+    - giá nước thấp nhất
+    - trà sữa giá thấp nhất
+    - cho em hỏi trà sữa giá thấp nhất
+    - trà sữa rẻ nhất
+    - ở đây món nước nào rẻ nhất ạ
+    - nước rẻ nhất
+    - nước giá thấp nhất
+    - thức uống giá rẻ nhất
+    - thức uống giá thấp nhât
+
+- intent: search_dish
+  examples: |
+    - có [socola đá xay](cust_name_dish) không 
+    - có [matcha đá xay](cust_name_dish) không
+    - có [trà sữa thái xanh](cust_name_dish) không
+    - có [trà sữa thái đỏ](cust_name_dish) không
+    - có [sữa tươi trân châu](cust_name_dish) không
+    - có [green tea mango](cust_name_dish) không
+    - có [Bánh Mochi](cust_name_dish) không
+    - có [Bánh Su kem](cust_name_dish) không
+    - có [Bánh rán Dorayaki](cust_name_dish) không
+    - có [Bánh Tiramisu Ý](cust_name_dish) không
+    - có [Hồng trà sữa](cust_name_dish) không
+    - có [Bánh Macaron Pháp](cust_name_dish) không
+    - có [Trà sữa khoai môn](cust_name_dish) không
+    - có [Hồng trà dâu](cust_name_dish) không
+    - có [Bông lan trứng muối](cust_name_dish) không
+    - có [Cupcake](cust_name_dish) không
+    - có [Trà sữa hạnh nhân](cust_name_dish) không
+    - có [Muffin](cust_name_dish) không
+    - có [Trà sữa xoài](cust_name_dish) không
+    - có [Bánh Pancake](cust_name_dish) không
+    - có [Trà sữa Oreo](cust_name_dish) không
+    - có [Trà sữa đậu đỏ](cust_name_dish) không
+    - có [Trà sữa hokkaido](cust_name_dish) không
+    - có [Tiramisu](cust_name_dish) không
+    - có [Bánh gato](cust_name_dish) không
+    - có [Trà sữa sương sáo](cust_name_dish) không
+    - có [Cheesecake](cust_name_dish) không
+    - có [Bánh ngọt Donut](cust_name_dish) không
+    - có [Bánh Tapioca Brazil](cust_name_dish) không
+    - có [Trà sữa thạch củ năng](cust_name_dish) không
+    - có [Trà sữa thạch phô mai](cust_name_dish) không
+    - có [Bánh Sachertorte](cust_name_dish) không
+    - có [Bánh Pavlova](cust_name_dish) không
+    - có [Hồng trà vải](cust_name_dish) không
+    - có [Hồng trà nho](cust_name_dish) không
+    - có [Hồng trà sữa](cust_name_dish) không
+    - có [Hồng trà macchiato](cust_name_dish) không
+    - có [Bánh Black Forest](cust_name_dish) không
+    - có [Bánh táo](cust_name_dish) không
+    - có [Bánh Carac](cust_name_dish) không
+    - có [Trà sữa khúc bạch](cust_name_dish) không
+    - có [Trà đào](cust_name_dish) không
+    - có [Bánh Pandan](cust_name_dish) không
+    - có [Bánh Madeleines](cust_name_dish) không
+    - có [Trà sữa bạc hà](cust_name_dish) không
+    - có [Trà sữa Machiato](cust_name_dish) không
+    - có [Bánh Crepe](cust_name_dish) không
+    - có [Rosca de Reyes](cust_name_dish) không
+    - có [Bánh Kolache](cust_name_dish) không
+    - giá [socola đá xay](cust_price_dish) bao nhiêu 
+    - giá [matcha đá xay](cust_price_dish) bao nhiêu
+    - giá [trà sữa thái xanh](cust_price_dish) bao nhiêu
+    - giá [trà sữa thái đỏ](cust_price_dish) bao nhiêu
+    - giá [sữa tươi trân châu](cust_price_dish) bao nhiêu
+    - giá [green tea mango](cust_price_dish) bao nhiêu
+    - giá [Bánh Mochi](cust_price_dish) bao nhiêu
+    - giá [Bánh Su kem](cust_price_dish) bao nhiêu
+    - giá [Bánh rán Dorayaki](cust_price_dish) bao nhiêu
+    - giá [Bánh Tiramisu Ý](cust_price_dish) bao nhiêu
+    - giá [Hồng trà sữa](cust_price_dish) bao nhiêu
+    - giá [Bánh Macaron Pháp](cust_price_dish) bao nhiêu
+    - giá [Trà sữa khoai môn](cust_price_dish) bao nhiêu
+    - giá [Hồng trà dâu](cust_price_dish) bao nhiêu
+    - giá [Bông lan trứng muối](cust_price_dish) bao nhiêu
+    - giá [Cupcake](cust_price_dish) bao nhiêu
+    - giá [Trà sữa hạnh nhân](cust_price_dish) bao nhiêu
+    - giá [Muffin](cust_price_dish) bao nhiêu
+    - giá [Trà sữa xoài](cust_price_dish) bao nhiêu
+    - giá [Bánh Pancake](cust_price_dish) bao nhiêu
+    - giá [Trà sữa Oreo](cust_price_dish) bao nhiêu
+    - giá [Trà sữa đậu đỏ](cust_price_dish) bao nhiêu
+    - giá [Trà sữa hokkaido](cust_price_dish) bao nhiêu
+    - giá [Tiramisu](cust_price_dish) bao nhiêu
+    - giá [Bánh gato](cust_price_dish) bao nhiêu
+    - giá [Trà sữa sương sáo](cust_price_dish) bao nhiêu
+    - giá [Cheesecake](cust_price_dish) bao nhiêu
+    - giá [Bánh ngọt Donut](cust_price_dish) bao nhiêu
+    - giá [Bánh Tapioca Brazil](cust_price_dish) bao nhiêu
+    - giá [Trà sữa thạch củ năng](cust_price_dish) bao nhiêu
+    - giá [Trà sữa thạch phô mai](cust_price_dish) bao nhiêu
+    - giá [Bánh Sachertorte](cust_price_dish) bao nhiêu
+    - giá [Bánh Pavlova](cust_price_dish) bao nhiêu
+    - giá [Hồng trà vải](cust_price_dish) bao nhiêu
+    - giá [Hồng trà nho](cust_price_dish) bao nhiêu
+    - giá [Hồng trà sữa](cust_price_dish) bao nhiêu
+    - giá [Hồng trà macchiato](cust_price_dish) bao nhiêu
+    - giá [Bánh Black Forest](cust_price_dish) bao nhiêu
+    - giá [Bánh táo](cust_price_dish) bao nhiêu
+    - giá [Bánh Carac](cust_price_dish) bao nhiêu
+    - giá [Trà sữa khúc bạch](cust_price_dish) bao nhiêu
+    - giá [Trà đào](cust_price_dish) bao nhiêu
+    - giá [Bánh Pandan](cust_price_dish) bao nhiêu
+    - giá [Bánh Madeleines](cust_price_dish) bao nhiêu
+    - giá [Trà sữa bạc hà](cust_price_dish) bao nhiêu
+    - giá [Trà sữa Machiato](cust_price_dish) bao nhiêu
+    - giá [Bánh Crepe](cust_price_dish) bao nhiêu
+    - giá [Rosca de Reyes](cust_price_dish) bao nhiêu
+    - giá [Bánh Kolache](cust_price_dish) bao nhiêu   
+
+
+- intent: search_price_size
+  examples: |
+    - giá [socola đá xay](cust_price_dish) size [s](cust_size) bao nhiêu 
+    - giá [matcha đá xay](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [trà sữa thái xanh](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [trà sữa thái đỏ](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [sữa tươi trân châu](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Hồng trà sữa](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà sữa khoai môn](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Hồng trà dâu](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà sữa hạnh nhân](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà sữa xoài](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà sữa Oreo](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà sữa đậu đỏ](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà sữa hokkaido](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà sữa sương sáo](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà sữa thạch củ năng](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà sữa thạch phô mai](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Hồng trà vải](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Hồng trà nho](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Hồng trà sữa](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Hồng trà macchiato](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà sữa khúc bạch](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà đào](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà sữa bạc hà](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [Trà sữa Machiato](cust_price_dish) size [s](cust_size) bao nhiêu
+    - giá [socola đá xay](cust_price_dish) size [m](cust_size) bao nhiêu 
+    - giá [matcha đá xay](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [trà sữa thái xanh](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [trà sữa thái đỏ](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [sữa tươi trân châu](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Hồng trà sữa](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà sữa khoai môn](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Hồng trà dâu](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà sữa hạnh nhân](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà sữa xoài](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà sữa Oreo](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà sữa đậu đỏ](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà sữa hokkaido](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà sữa sương sáo](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà sữa thạch củ năng](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà sữa thạch phô mai](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Hồng trà vải](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Hồng trà nho](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Hồng trà sữa](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Hồng trà macchiato](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà sữa khúc bạch](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà đào](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà sữa bạc hà](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [Trà sữa Machiato](cust_price_dish) size [m](cust_size) bao nhiêu
+    - giá [socola đá xay](cust_price_dish) size [l](cust_size) bao nhiêu 
+    - giá [matcha đá xay](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [trà sữa thái xanh](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [trà sữa thái đỏ](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [sữa tươi trân châu](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Hồng trà sữa](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà sữa khoai môn](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Hồng trà dâu](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà sữa hạnh nhân](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà sữa xoài](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà sữa Oreo](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà sữa đậu đỏ](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà sữa hokkaido](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà sữa sương sáo](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà sữa thạch củ năng](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà sữa thạch phô mai](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Hồng trà vải](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Hồng trà nho](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Hồng trà sữa](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Hồng trà macchiato](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà sữa khúc bạch](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà đào](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà sữa bạc hà](cust_price_dish) size [l](cust_size) bao nhiêu
+    - giá [Trà sữa Machiato](cust_price_dish) size [l](cust_size) bao nhiêu  
+
+
