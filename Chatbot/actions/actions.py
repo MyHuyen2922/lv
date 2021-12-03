@@ -240,7 +240,7 @@ class ActionSearchDish(Action):
         except Error as e:
             dispatcher.utter_message(e)
 
-class ActionSearchDish(Action):
+class ActionSearchPriceSize(Action):
     def name(self)-> Text:
         return "action_search_price_size"
 
@@ -269,6 +269,29 @@ class ActionSearchDish(Action):
                         dict['action'] = str(i[0])
                         dict['img'] = str(i[3])
                         dispatcher.utter_message(json_message=dict)
+                cursor.close()
+            connect.close()
+        except Error as e:
+            dispatcher.utter_message(e)
+
+class ActionListDiscount(Action):
+    def name(self)-> Text:
+        return "action_list_discount"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker:Tracker, domain):
+        try:
+            connect = mysql.connector.connect(host='127.0.0.1', user ='root', password ='', database='database')
+            if connect.is_connected():
+                cursor = connect.cursor()
+                cursor.execute("SELECT `m`.`idmon`,tenmon,gia FROM `khuyenmai` k JOIN `mon` m ON `k`.`idmon` = `m`.`idmon`")
+                result = cursor.fetchall()
+                dispatcher.utter_message("Gửi quý khách danh sách các món đang có khuyến mãi bên em, vui lòng nhấp vào để xem chi tiết !!!")
+                for i in result:
+                    dict ={}
+                    dict['text'] = str(i[1] + "|Giá: {:,} VNĐ".format(int(i[2])))
+                    dict['action'] = str(i[0])
+                    dict['img'] = None    
+                    dispatcher.utter_message(json_message=dict)
                 cursor.close()
             connect.close()
         except Error as e:

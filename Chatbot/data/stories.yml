@@ -116,3 +116,5 @@ stories:
   - action: action_search_dish
   - intent: search_price_size
   - action: action_search_price_size
+  - intent: list_discount
+  - action: action_list_discount

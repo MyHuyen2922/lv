@@ -37,6 +37,7 @@ intents:
   - price_low_milk
   - search_dish
   - search_price_size
+  - list_discount
 
 entities:
   - cust_sex
@@ -126,9 +127,9 @@ responses:
   - text: "Dạ cửa hàng của em tên Cherry. Quý khách còn thắc mắc gì không ạ?"
   
   utter_greet:
-  - text: "Xin chào. Quý khách có thể cho biết tên để em tiện xưng hô được không ạ ?"
   - text: "Xin chào. Mình có thể giúp gì cho bạn ?"
   - text: "Xin chào quý khách. Anh/ chị cần tư  vấn gì ạ ?"
+  - text: "Chào mừng quý khách đã đến với Cherry, em có thể giúp gì cho quý khách ạ ?"
 
   utter_greet_with_name:
   - text: "Kính chào {cust_sex} {cust_name}. Cherry Store có thể giúp gì cho {cust_sex} {cust_name} ạ?"
@@ -185,6 +186,7 @@ actions:
   - action_price_high_milk
   - action_search_dish
   - action_search_price_size
+  - action_list_discount
 
 session_config:
   session_expiration_time: 60

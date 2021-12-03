@@ -166,7 +166,6 @@ nlu:
 
 - intent: discount
   examples: |
-    - khuyến mãi
     - chương trình khuyến Mãi
     - có voucher khuyễn mãi không
     - khuyến mãi như thế nào
@@ -501,7 +500,6 @@ nlu:
     - giá [Rosca de Reyes](cust_price_dish) bao nhiêu
     - giá [Bánh Kolache](cust_price_dish) bao nhiêu   
 
-
 - intent: search_price_size
   examples: |
     - giá [socola đá xay](cust_price_dish) size [s](cust_size) bao nhiêu 
@@ -577,4 +575,11 @@ nlu:
     - giá [Trà sữa bạc hà](cust_price_dish) size [l](cust_size) bao nhiêu
     - giá [Trà sữa Machiato](cust_price_dish) size [l](cust_size) bao nhiêu  
 
+- intent: list_discount
+  examples: |
+    - danh sách khuyến mãi
+    - các món có khuyến mãi
+    - món nào khuyến mãi vậy
+    - xin các món đang có khuyến mãi ạ
+    - khuyến mãi
 
