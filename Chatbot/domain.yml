@@ -128,7 +128,7 @@ responses:
   
   utter_greet:
   - text: "Xin chào. Mình có thể giúp gì cho bạn ?"
-  - text: "Xin chào quý khách. Anh/ chị cần tư  vấn gì ạ ?"
+  - text: "Xin chào quý khách. Anh/ chị cần tư vấn gì ạ ?"
   - text: "Chào mừng quý khách đã đến với Cherry, em có thể giúp gì cho quý khách ạ ?"
 
   utter_greet_with_name:

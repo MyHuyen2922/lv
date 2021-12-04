@@ -202,6 +202,7 @@ class Admin extends Component {
             class_edit: "col-12 mt-3 edit-visible",
             dataOnEdit: data[index],
             class_admin: 'hidden',
+            class_search: 'hidden',
         })
         window.scrollTo(0, 0);
         console.log(this.state.dataOnEdit);

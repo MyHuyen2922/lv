@@ -9,7 +9,7 @@
 background-color: #f8e590;
 }
 .bggray{
-  background-color: #f3efef;
+  background-color: #f8f2f2;
 }
 .nav{
   background-color: #dddfdf;
@@ -370,7 +370,6 @@ z-index: 0;
   visibility: visible;
   position: absolute;
   border: 1px solid pink;
-  background-color: white;
   z-index: 10;
 }
 .home-hidden{

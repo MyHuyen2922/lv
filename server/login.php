@@ -10,9 +10,14 @@
         }
         else{
             $result=$connect->query("select * from `shipper` where `email`='".$_POST['email']."'");
-            $row = $result->fetch_assoc();
-            $res['vaitro'] = 'shipper'; 
-            $res[]=$row;
+            if($result->num_rows >0){
+                $row = $result->fetch_assoc();
+                $res['vaitro'] = 'shipper'; 
+                $res[]=$row;
+            }
+            else{
+                $res[]= 400;
+            }
         }
     }
     else if(isset($_POST['idshipper'])){

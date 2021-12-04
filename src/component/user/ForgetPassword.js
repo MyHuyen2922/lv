@@ -29,6 +29,9 @@ class ForgetPassword extends Component {
                
             }
             else{
+                this.setState({
+                    loading: false,
+                })
                 alert("Nhập lại email !!!");
             }
         })

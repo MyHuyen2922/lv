@@ -60,7 +60,10 @@ class Login extends Component {
                         })
                     }
                 }
-                else alert("Email hoặc mật khẩu của bạn chưa đúng !!!");
+                else if(response.data[0] === 400){
+                    alert("Email của bạn chưa đúng !!!");
+                }
+                else alert("Mật khẩu của bạn chưa đúng !!!");
             })
             .catch(error => {
                 console.log(error)

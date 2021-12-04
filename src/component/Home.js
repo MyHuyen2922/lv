@@ -80,14 +80,14 @@ class Home extends Component {
         let tpdd = data[index].tpdd.split('|');
         tpdd.splice(data[index].tpdd.length - 1,data[index].tpdd.length);
         this.setState({
-            class_detail: 'col-10 offset-1 bggreen detail-visible',
+            class_detail: 'col-10 offset-1 bg-da detail-visible',
             class_home: 'col-12 home-hidden',
             dataDetail: data[index],
             giaSize: data[index].gia,
             thanhphandd : tpdd
         })
         window.scrollTo(0, 0);
-        if (data[index].km === null) {
+        if (data[index].km === null) { 
             this.setState({
                 giaSize: data[index].gia,
             })
@@ -118,7 +118,7 @@ class Home extends Component {
         tpdd.splice(data[index].tpdd.length - 1,data[index].tpdd.length);
         console.log(data[index]);
         this.setState({
-            class_detail: 'col-10 offset-1 bggreen detail-visible',
+            class_detail: 'col-10 offset-1 bg-da detail-visible',
             class_home: 'col-12 home-hidden',
             dataDetail: data[index],
             giaSize: data[index].gia,
@@ -153,7 +153,7 @@ class Home extends Component {
         tpdd.splice(data[index].tpdd.length - 1,data[index].tpdd.length);
         console.log(data[index]);
         this.setState({
-            class_detail: 'col-10 offset-1 bggreen detail-visible',
+            class_detail: 'col-10 offset-1 bg-da detail-visible',
             class_home: 'col-12 home-hidden',
             dataDetail: data[index],
             giaSize: data[index].gia,
@@ -187,7 +187,7 @@ class Home extends Component {
         let tpdd = data[index].tpdd.split('|');
         tpdd.splice(data[index].tpdd.length - 1,data[index].tpdd.length);
         this.setState({
-            class_detail: 'col-10 offset-1 bggreen detail-visible',
+            class_detail: 'col-10 offset-1 bg-da detail-visible',
             class_home: 'col-12 home-hidden',
             dataDetail: data[index],
             giaSize: data[index].gia,
@@ -222,7 +222,7 @@ class Home extends Component {
         let tpdd = data[index].tpdd.split('|');
         tpdd.splice(data[index].tpdd.length - 1,data[index].tpdd.length);
         this.setState({
-            class_detail: 'col-10 offset-1 bggreen detail-visible',
+            class_detail: 'col-10 offset-1 bg-da detail-visible',
             class_home: 'col-12 home-hidden',
             dataDetail: data[index],
             giaSize: data[index].gia,
