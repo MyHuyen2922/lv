@@ -376,6 +376,8 @@ class Sales extends Component {
         }
     }
     render() {
+        if(Object.keys(this.state.thongkedoanhthu).length === 0)
+            return null;
         const formatNumber = new Intl.NumberFormat('de');
         return (
             <div className="iframeadmin">

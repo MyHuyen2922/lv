@@ -186,7 +186,7 @@ actions:
   - action_price_high_milk
   - action_search_dish
   - action_search_price_size
-  - action_list_discount
+  - action_list_discount 
 
 session_config:
   session_expiration_time: 60
