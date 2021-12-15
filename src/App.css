@@ -32,6 +32,10 @@ background-color: #f8e590;
 .aaa{
   border: 3px solid blue;
 }
+.tenquan{
+  font-size: 20px;
+  font-family:'Courier New', Courier, monospace
+}
 .imgChat{
   height: 200px;
   width: 150px;

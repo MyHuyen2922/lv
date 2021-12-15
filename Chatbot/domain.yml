@@ -38,6 +38,9 @@ intents:
   - search_dish
   - search_price_size
   - list_discount
+  - rate_high
+  - free_ship
+  - multi_address
 
 entities:
   - cust_sex
@@ -55,6 +58,12 @@ slots:
     type: text
 
 responses:
+
+  utter_multi_address:
+  - text: 'Dạ bên em chỉ giao một địa chỉ cho một đơn thôi ạ !'
+
+  utter_free_ship:
+  - text: 'Dạ với trường hợp mua nhiều bên em vẫn tính tiền ship bình thường ạ, em sẽ xem xét lại vấn đề này. Cảm ơn quý khách !'
 
   utter_email:
   - text: "Anh/chị có thể liên lạc với cửa hàng qua email myhuyen2922@gmail.com !"
@@ -147,7 +156,7 @@ responses:
   - text: "Kính chào tạm biệt và chúc quý khách một ngày tốt lành !!!"
 
   utter_default:
-  - text: "Thưa quý khách, hiện tại em chưa hiểu yêu cầu của quý khách !!!"
+  - text: "Thưa quý khách, hiện tại em chưa hiểu yêu cầu của quý khách. Quý khách có thê liên hệ trực tiếp đến cửa hàng qua 0812323231 ạ !!!"
 
 actions:
   - utter_greet
@@ -178,6 +187,8 @@ actions:
   - utter_default
   - utter_phone
   - utter_email
+  - utter_multi_address
+  - utter_free_ship
   - action_price_high
   - action_price_low
   - action_price_low_cake
@@ -187,6 +198,7 @@ actions:
   - action_search_dish
   - action_search_price_size
   - action_list_discount 
+  - action_rate_high
 
 session_config:
   session_expiration_time: 60

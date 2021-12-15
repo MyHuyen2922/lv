@@ -357,6 +357,9 @@ nlu:
     - món bánh mắc nhất
     - món bánh đắt nhất
     - ở đây món bánh nào đắt nhất ạ
+    - cho em hỏi bánh nào mắc nhất ở cửa hàng
+    - xin giá bánh mắc nhất
+    - bánh mắc nhất
 
 - intent: price_high_milk
   examples: |
@@ -378,6 +381,7 @@ nlu:
     - cho em hỏi món giá thấp nhất
     - món rẻ nhất
     - ở đây món nào rẻ nhất ạ
+    - sản phẩm nào rẻ nhất vậy
 
 - intent: price_low_cake
   examples: |
@@ -386,6 +390,9 @@ nlu:
     - cho em hỏi món bánh giá thấp nhất
     - món bánh ngọt rẻ nhất
     - ở đây món bánh ngọt nào rẻ nhất ạ
+    - bánh nào rẻ nhất vậy
+    - xin giá bánh rẻ nhất
+    - bánh nào rẻ nhất
 
 - intent: price_low_milk
   examples: |
@@ -398,6 +405,9 @@ nlu:
     - nước giá thấp nhất
     - thức uống giá rẻ nhất
     - thức uống giá thấp nhât
+    - nước uống nào rẻ nhất
+    - nước nào rẻ nhất vậy
+    - rẻ nhất là nước nào
 
 - intent: search_dish
   examples: |
@@ -585,3 +595,45 @@ nlu:
     - cho xin món có khuyến mãi
     - món nào đang khuyến mãi vậy ạ
     - món đang khuyến mãi
+    - sản phẩm đang khuyến mãi
+    - đang khuyến mãi sản phẩm nào vậy
+
+- intent: rate_high
+  examples: |
+    - đánh giá cao
+    - món nào có đánh giá cao nhất vậy
+    - cho hỏi món có đánh giá cao nhất
+    - cho mình hỏi món nào có đánh giá cao nhất vậy
+    - đánh giá cao nhất là món nào
+    - cho xin món có đánh giá cao nhất
+    - món có đánh giá cao
+    - em xin món được đánh giá cao
+    - sản phẩm có đánh giá cao
+    - danh sách món được đánh giá cao
+    - được đánh giá cao
+
+- intent: free_ship
+  examples: |
+    - mua nhiều có free ship không vậy
+    - cho em hỏi mua nhiều có miễn phí ship không
+    - có chương trình khuyến mãi nào miễn phí ship không vậy
+    - mua nhiều phí ship có giảm không
+    - mua nhiều ship sao
+    - mua nhiều có miễn phí vận chuyển không
+    - tiền ship khi mua nhiều có giảm không
+    - mua nhiều có miễn phí vận chuyển không
+    - mua nhiều có tính tiền ship không
+
+- intent: multi_address
+  examples: |
+    - giao một đơn cho nhiều địa chỉ được không
+    - một đơn có thể giao cho nhiều địa chỉ không vậy ạ
+    - một đơn giao nhiều địa chỉ được không
+    - một đơn giao cho 2 địa chỉ được không
+    - một đơn giao cho hai địa chỉ được không ạ
+    - giao một đơn cho 2 địa chỉ được không
+    - cho em hỏi giao một đơn cho 2 địa chỉ được không ạ
+    - một đơn 2 địa chỉ
+    - một đơn nhiều địa chỉ 
+    - 2 địa chỉ cho một đơn được không
+    - nhiều địa chỉ cho một đơn được không

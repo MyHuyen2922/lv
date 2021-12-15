@@ -296,3 +296,26 @@ class ActionListDiscount(Action):
             connect.close()
         except Error as e:
             dispatcher.utter_message(e)
+
+class ActionRateHigh(Action):
+    def name(self)-> Text:
+        return "action_rate_high"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker:Tracker, domain):
+        try:
+            connect = mysql.connector.connect(host='127.0.0.1', user ='root', password ='', database='database')
+            if connect.is_connected():
+                cursor = connect.cursor()
+                cursor.execute("SELECT `m`.`idmon`,`m`.`tenmon`,`m`.`gia`,`m`.`hinhanh`,AVG(`b`.`diem`) avg FROM `mon` m JOIN `binhluan` b ON `m`.`idmon`=`b`.`idmon` GROUP BY (`b`.`idmon`) HAVING avg >= 4")
+                result = cursor.fetchall()
+                dispatcher.utter_message("Gửi quý khách danh sách các món được đánh giá cao bên em, vui lòng nhấp vào để xem chi tiết !!!")
+                for i in result:
+                    dict ={}
+                    dict['text'] = str(i[1] + "|Giá: {:,} VNĐ".format(int(i[2])))
+                    dict['action'] = str(i[0])
+                    dict['img'] = str(i[3])   
+                    dispatcher.utter_message(json_message=dict)
+                cursor.close()
+            connect.close()
+        except Error as e:
+            dispatcher.utter_message(e)

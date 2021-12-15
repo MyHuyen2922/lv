@@ -349,7 +349,9 @@ class Cart extends Component {
                                                                 <div className="col-3"><span>{data.tenmon}</span></div>
                                                                 <div className="col-2"> {formatNumber.format(data.gia)}₫</div>
                                                                 <div className="col-1">
-                                                                    <div class="input-group-prepend">
+                                                                    {
+                                                                        data.loai ==='banhngot' ? ( null):(
+                                                                            <div class="input-group-prepend">
                                                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{data.size}</button>
                                                                         <div class="dropdown-menu">
                                                                             {size.map((item, index1) =>
@@ -357,6 +359,8 @@ class Cart extends Component {
                                                                             )}
                                                                         </div>
                                                                     </div>
+                                                                        )
+                                                                    }
                                                                 </div>
                                                                 <div className="col-2">
                                                                     <button className="quantity" type="button" value={index} onClick={this.DownQuantity}> - </button>
@@ -384,7 +388,9 @@ class Cart extends Component {
                                                                 <div className="col-3"><span>{data.tenmon}</span></div>
                                                                 <div className="col-2"> {formatNumber.format(data.gia)}₫</div>
                                                                 <div className="col-1">
-                                                                    <div class="input-group-prepend">
+                                                                    {
+                                                                        data.loai === 'banhngot' ? ( null):(
+                                                                            <div class="input-group-prepend">
                                                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{data.size}</button>
                                                                         <div class="dropdown-menu">
                                                                             {size.map((item, index1) =>
@@ -392,6 +398,8 @@ class Cart extends Component {
                                                                             )}
                                                                         </div>
                                                                     </div>
+                                                                        )
+                                                                    }
                                                                 </div>
                                                                 <div className="col-2">
                                                                     <button className="quantity" type="button" value={index} onClick={this.DownQuantity}> - </button>
@@ -428,7 +436,9 @@ class Cart extends Component {
                                                                     <p className="giakm">{formatNumber.format(data.giagh)}₫</p>
                                                                 </div>
                                                                 <div className="col-1">
-                                                                    <div class="input-group-prepend">
+                                                                    {
+                                                                        data.loai === 'banhngot' ? ( null): (
+                                                                            <div class="input-group-prepend">
                                                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{data.size}</button>
                                                                         <div class="dropdown-menu">
                                                                         {size.map((item, index1) =>
@@ -436,6 +446,8 @@ class Cart extends Component {
                                                                             )}
                                                                         </div>
                                                                     </div>
+                                                                        )
+                                                                    }
                                                                 </div>
                                                                 <div className="col-2">
                                                                     <button className="quantity" type="button" value={index} onClick={this.DownQuantity}> - </button>
@@ -470,7 +482,9 @@ class Cart extends Component {
                                                                     <p className="giakm">{formatNumber.format(data.giagh)}₫</p>
                                                                 </div>
                                                                 <div className="col-1">
-                                                                    <div class="input-group-prepend">
+                                                                    {
+                                                                        data.loai === 'banhngot' ? ( null):(
+                                                                            <div class="input-group-prepend">
                                                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{data.size}</button>
                                                                         <div class="dropdown-menu">
                                                                         {size.map((item, index1) =>
@@ -478,6 +492,8 @@ class Cart extends Component {
                                                                             )}
                                                                         </div>
                                                                     </div>
+                                                                        )
+                                                                    }
                                                                 </div>
                                                                 <div className="col-2">
                                                                     <button className="quantity" type="button" value={index} onClick={this.DownQuantity}> - </button>

@@ -79,6 +79,10 @@ stories:
   - action: utter_om_fee_ship
   - intent: tn_fee_ship
   - action: utter_tn_fee_ship
+  - intent: free_ship
+  - action: utter_free_ship
+  - intent: multi_address
+  - action: utter_multi_address
 
 - story: dish
   steps:
@@ -118,3 +122,5 @@ stories:
   - action: action_search_price_size
   - intent: list_discount
   - action: action_list_discount
+  - intent: rate_high
+  - action: action_rate_high

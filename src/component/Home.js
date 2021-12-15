@@ -145,6 +145,18 @@ class Home extends Component {
                 class_ngaysx: 'hidden_ngaysx',
             })
         }
+        if (data[index].loai === 'banhngot') {
+            this.setState({
+                class_ngaysx: 'visible_ngaysx',
+                class_size: 'hidden_ngaysx'
+            })
+        }
+        else {
+            this.setState({
+                class_ngaysx: 'hidden_ngaysx',
+                class_size: 'visible_ngaysx',
+            })
+        }
 
     }
     visibleDetailSearch = (index) => {
@@ -180,6 +192,18 @@ class Home extends Component {
                 class_ngaysx: 'hidden_ngaysx'
             })
         }
+        if (data[index].loai === 'banhngot') {
+            this.setState({
+                class_ngaysx: 'visible_ngaysx',
+                class_size: 'hidden_ngaysx'
+            })
+        }
+        else {
+            this.setState({
+                class_ngaysx: 'hidden_ngaysx',
+                class_size: 'visible_ngaysx',
+            })
+        }
     }
     visibleDetailCost = (index) => {
         let data = this.state.dishcost;
@@ -206,12 +230,14 @@ class Home extends Component {
         }
         if (data[index].loai === 'banhngot') {
             this.setState({
-                class_ngaysx: 'visible_ngaysx'
+                class_ngaysx: 'visible_ngaysx',
+                class_size: 'hidden_ngaysx'
             })
         }
         else {
             this.setState({
-                class_ngaysx: 'hidden_ngaysx'
+                class_ngaysx: 'hidden_ngaysx',
+                class_size: 'visible_ngaysx',
             })
         }
     }
@@ -241,12 +267,14 @@ class Home extends Component {
         }
         if (data[index].loai === 'banhngot') {
             this.setState({
-                class_ngaysx: 'visible_ngaysx'
+                class_ngaysx: 'visible_ngaysx',
+                class_size: 'hidden_ngaysx'
             })
         }
         else {
             this.setState({
                 class_ngaysx: 'hidden_ngaysx',
+                class_size: 'visible_ngaysx',
             })
         }
     }
@@ -647,7 +675,8 @@ class Home extends Component {
                 <div className={this.state.class_home}>
                     <div className="row col-12 mb-2 bg-yellow ml-1">
                         <div className="col-3 mt-2 mb-2">
-                            <img src={Logo} onClick={this.getItem.bind(this, 0, 1)} className="logo" alt="logo" />
+                            <img src={Logo} onClick={this.getItem.bind(this, 0, 1)} className="logo" alt="logo" /> &nbsp;
+                            <span className='tenquan' >CHERRY STORE</span>
                         </div>
                         <div className="input-group col-6  mt-3">
                             <input type="text" name="search" value={this.state.search} onChange={this.onChange} className="form-control" placeholder="Bạn tìm..." />
@@ -664,33 +693,45 @@ class Home extends Component {
                             <h4 className="col-12 text-center mt-3">Kết quả tìm kiếm</h4>
                             {
                                 this.state.dishsearch.length > 0 ? (
-                                    this.state.dishsearch.map((data, index) => {
-                                        if (data.km === null) {
-                                            return (
-                                                <div className="col-2 mb-2 mon">
-                                                    <img onClick={this.visibleDetailSearch.bind(this, index)} className="hinhanh" src={"http://localhost:80/" + data.hinhanh} alt="hinhanh" />
-                                                    <p className="text-truncate ttmonCArt text" onClick={this.visibleDetailSearch.bind(this, index)}>{data.tenmon}</p>
-                                                    <p className="text-truncate ttmonCArt gia" onClick={this.visibleDetailSearch.bind(this, index)}>{formatNumber.format(data.gia)}₫</p>
-
-                                                </div>
+                                <div>
+                                    
+                                    <div>
+                                        {
+                                            this.state.dishsearch.map((data, index) => {
+                                                if (data.km === null) {
+                                                    return (
+                                                        <div className="col-2 mb-2 mon">
+                                                            <img onClick={this.visibleDetailSearch.bind(this, index)} className="hinhanh" src={"http://localhost:80/" + data.hinhanh} alt="hinhanh" />
+                                                            <p className="text-truncate ttmonCArt text" onClick={this.visibleDetailSearch.bind(this, index)}>{data.tenmon}</p>
+                                                            <p className="text-truncate ttmonCArt gia" onClick={this.visibleDetailSearch.bind(this, index)}>{formatNumber.format(data.gia)}₫</p>
+        
+                                                        </div>
+                                                    )
+                                                }
+                                                else {
+                                                    return (
+                                                        <div className="col-2 mb-2 mon">
+                                                            <div className="km">-{data.km}%</div>
+                                                            <img onClick={this.visibleDetailSearch.bind(this, index)} className="hinhanh" src={"http://localhost:80/" + data.hinhanh} alt="hinhanh" />
+                                                            <p className="text-truncate ttmonCArt text" onClick={this.visibleDetailSearch.bind(this, index)}>{data.tenmon}</p>
+                                                            <p className="text-truncate ttmonCArt">
+                                                                <span className="text-truncate ttmonCArt giabthg" onClick={this.visibleDetailSearch.bind(this, index)}>{formatNumber.format(data.gia)}₫</span> &nbsp;
+                                                                <span className="text-truncate ttmonCArt gia" onClick={this.visibleDetailSearch.bind(this, index)}>{formatNumber.format(data.gia - (data.gia * data.km / 100))}₫</span>
+        
+                                                            </p>
+                                                        </div>
+                                                    )
+                                                }
+                                            }
                                             )
                                         }
-                                        else {
-                                            return (
-                                                <div className="col-2 mb-2 mon">
-                                                    <div className="km">-{data.km}%</div>
-                                                    <img onClick={this.visibleDetailSearch.bind(this, index)} className="hinhanh" src={"http://localhost:80/" + data.hinhanh} alt="hinhanh" />
-                                                    <p className="text-truncate ttmonCArt text" onClick={this.visibleDetailSearch.bind(this, index)}>{data.tenmon}</p>
-                                                    <p className="text-truncate ttmonCArt">
-                                                        <span className="text-truncate ttmonCArt giabthg" onClick={this.visibleDetailSearch.bind(this, index)}>{formatNumber.format(data.gia)}₫</span> &nbsp;
-                                                        <span className="text-truncate ttmonCArt gia" onClick={this.visibleDetailSearch.bind(this, index)}>{formatNumber.format(data.gia - (data.gia * data.km / 100))}₫</span>
-
-                                                    </p>
-                                                </div>
-                                            )
-                                        }
-                                    }
-                                    )
+                                    </div>
+                                    <div className="col-12 mt-2 text-center">
+                                        <span className="border border-secondary p-1  pl-2 pr-2  mr-1" onClick={this.ChangePagiSearch.bind(this, 'previous')}>	&lt;</span>
+                                        <span className="border border-secondary p-1 mr-1 bg-white">{"Trang " + this.state.current_page + "/" + this.state.all_page}</span>
+                                        <span className="border border-secondary p-1 pl-2 pr-2 " onClick={this.ChangePagiSearch.bind(this, 'next')}>&gt;</span>
+                                    </div>
+                                </div>
 
                                 ) : (
                                     <div className="col-12 text-center">
@@ -700,43 +741,50 @@ class Home extends Component {
                                 )
                             }
                         </div>
-                        <div className="col-12 mt-2 text-center">
-                            <span className="border border-secondary p-1  pl-2 pr-2  mr-1" onClick={this.ChangePagiSearch.bind(this, 'previous')}>	&lt;</span>
-                            <span className="border border-secondary p-1 mr-1 bg-white">{"Trang " + this.state.current_page + "/" + this.state.all_page}</span>
-                            <span className="border border-secondary p-1 pl-2 pr-2 " onClick={this.ChangePagiSearch.bind(this, 'next')}>&gt;</span>
-                        </div>
+                        
                     </div>
                     <div className={this.state.class_searchlistcost}>
                         <div className="col-12">
                             <h4 className="col-12 text-center mt-3">Kết quả tìm kiếm</h4>
                             {
                                 this.state.dishlistcost.length > 0 ? (
-                                    this.state.dishlistcost.map((data, index) => {
-                                        if (data.km === null) {
-                                            return (
-                                                <div className="col-2 mb-2 mon">
-                                                    <img onClick={this.visibleListCost.bind(this, index)} className="hinhanh" src={"http://localhost:80/" + data.hinhanh} alt="hinhanh" />
-                                                    <p className="text-truncate ttmonCArt text" onClick={this.visibleListCost.bind(this, index)}>{data.tenmon}</p>
-                                                    <p className="text-truncate ttmonCArt gia" onClick={this.visibleListCost.bind(this, index)}>{formatNumber.format(data.gia)}₫</p>
-
-                                                </div>
-                                            )
-                                        }
-                                        else {
-                                            return (
-                                                <div className="col-2 mb-2 mon">
-                                                    <div className="km">-{data.km}%</div>
-                                                    <img onClick={this.visibleListCost.bind(this, index)} className="hinhanh" src={"http://localhost:80/" + data.hinhanh} alt="hinhanh" />
-                                                    <p className="text-truncate ttmonCArt text" onClick={this.visibleListCost.bind(this, index)}>{data.tenmon}</p>
-                                                    <p className="text-truncate ttmonCArt">
-                                                        <span className="text-truncate ttmonCArt giabthg" onClick={this.visibleListCost.bind(this, index)}>{formatNumber.format(data.gia)}₫</span> &nbsp;
-                                                        <span className="text-truncate ttmonCArt gia" onClick={this.visibleListCost.bind(this, index)}>{formatNumber.format(data.gia - (data.gia * data.km / 100))}₫</span>
-                                                    </p>
-                                                </div>
-                                            )
-                                        }
-                                    }
-                                    )
+                                    <div>
+                                        <div>
+                                            {
+                                                this.state.dishlistcost.map((data, index) => {
+                                                    if (data.km === null) {
+                                                        return (
+                                                            <div className="col-2 mb-2 mon">
+                                                                <img onClick={this.visibleListCost.bind(this, index)} className="hinhanh" src={"http://localhost:80/" + data.hinhanh} alt="hinhanh" />
+                                                                <p className="text-truncate ttmonCArt text" onClick={this.visibleListCost.bind(this, index)}>{data.tenmon}</p>
+                                                                <p className="text-truncate ttmonCArt gia" onClick={this.visibleListCost.bind(this, index)}>{formatNumber.format(data.gia)}₫</p>
+            
+                                                            </div>
+                                                        )
+                                                    }
+                                                    else {
+                                                        return (
+                                                            <div className="col-2 mb-2 mon">
+                                                                <div className="km">-{data.km}%</div>
+                                                                <img onClick={this.visibleListCost.bind(this, index)} className="hinhanh" src={"http://localhost:80/" + data.hinhanh} alt="hinhanh" />
+                                                                <p className="text-truncate ttmonCArt text" onClick={this.visibleListCost.bind(this, index)}>{data.tenmon}</p>
+                                                                <p className="text-truncate ttmonCArt">
+                                                                    <span className="text-truncate ttmonCArt giabthg" onClick={this.visibleListCost.bind(this, index)}>{formatNumber.format(data.gia)}₫</span> &nbsp;
+                                                                    <span className="text-truncate ttmonCArt gia" onClick={this.visibleListCost.bind(this, index)}>{formatNumber.format(data.gia - (data.gia * data.km / 100))}₫</span>
+                                                                </p>
+                                                            </div>
+                                                        )
+                                                    }
+                                                }
+                                                )
+                                            }
+                                        </div>
+                                        <div className="col-12 mt-2 text-center">
+                                            <span className="border border-secondary p-1  pl-2 pr-2  mr-1" onClick={this.ChangePagiCost.bind(this, 'previous')}>	&lt;</span>
+                                            <span className="border border-secondary p-1 mr-1 bg-white">{"Trang " + this.state.current_page_cost + "/" + this.state.all_page_cost}</span>
+                                            <span className="border border-secondary p-1 pl-2 pr-2 " onClick={this.ChangePagiCost.bind(this, 'next')}>&gt;</span>
+                                        </div>
+                                    </div>
                                 ) : (
                                     <div className="col-12 text-center">
                                         <img src={Chipi} alt="hinhanh" className="chipi" />
@@ -744,11 +792,6 @@ class Home extends Component {
                                     </div>
                                 )
                             }
-                        </div>
-                        <div className="col-12 mt-2 text-center">
-                            <span className="border border-secondary p-1  pl-2 pr-2  mr-1" onClick={this.ChangePagiCost.bind(this, 'previous')}>	&lt;</span>
-                            <span className="border border-secondary p-1 mr-1 bg-white">{"Trang " + this.state.current_page_cost + "/" + this.state.all_page_cost}</span>
-                            <span className="border border-secondary p-1 pl-2 pr-2 " onClick={this.ChangePagiCost.bind(this, 'next')}>&gt;</span>
                         </div>
                     </div>
                     <div className={this.state.class_searchcost}>
@@ -756,33 +799,44 @@ class Home extends Component {
                             <h4 className="col-12 text-center mt-3">Kết quả tìm kiếm</h4>
                             {
                                 this.state.dishcost.length > 0 ? (
-                                    this.state.dishcost.map((data, index) => {
-                                        if (data.km === null) {
-                                            return (
-                                                <div className="col-2 mb-2 mon">
-
-                                                    <img onClick={this.visibleDetailCost.bind(this, index)} className="hinhanh" src={"http://localhost:80/" + data.hinhanh} alt="hinhanh" />
-                                                    <p className="text-truncate ttmonCArt text" onClick={this.visibleDetailCost.bind(this, index)}>{data.tenmon}</p>
-                                                    <p className="text-truncate ttmonCArt gia" onClick={this.visibleDetailCost.bind(this, index)}>{formatNumber.format(data.gia)}₫</p>
-
-                                                </div>
-                                            )
-                                        }
-                                        else {
-                                            return (
-                                                <div className="col-2 mb-2 mon">
-                                                    <div className="km">-{data.km}%</div>
-                                                    <img onClick={this.visibleDetailCost.bind(this, index)} className="hinhanh" src={"http://localhost:80/" + data.hinhanh} alt="hinhanh" />
-                                                    <p className="text-truncate ttmonCArt text" onClick={this.visibleDetailCost.bind(this, index)}>{data.tenmon}</p>
-                                                    <p className="text-truncate ttmonCArt">
-                                                        <span className="text-truncate ttmonCArt giabthg" onClick={this.visibleDetailCost.bind(this, index)}>{formatNumber.format(data.gia)}₫</span> &nbsp;
-                                                        <span className="text-truncate ttmonCArt gia" onClick={this.visibleDetailCost.bind(this, index)}>{formatNumber.format(data.gia - (data.gia * data.km / 100))}₫</span>
-                                                    </p>
-                                                </div>
-                                            )
-                                        }
-                                    }
-                                    )
+                                   <div>
+                                       <div>
+                                           {
+                                                this.state.dishcost.map((data, index) => {
+                                                    if (data.km === null) {
+                                                        return (
+                                                            <div className="col-2 mb-2 mon">
+            
+                                                                <img onClick={this.visibleDetailCost.bind(this, index)} className="hinhanh" src={"http://localhost:80/" + data.hinhanh} alt="hinhanh" />
+                                                                <p className="text-truncate ttmonCArt text" onClick={this.visibleDetailCost.bind(this, index)}>{data.tenmon}</p>
+                                                                <p className="text-truncate ttmonCArt gia" onClick={this.visibleDetailCost.bind(this, index)}>{formatNumber.format(data.gia)}₫</p>
+            
+                                                            </div>
+                                                        )
+                                                    }
+                                                    else {
+                                                        return (
+                                                            <div className="col-2 mb-2 mon">
+                                                                <div className="km">-{data.km}%</div>
+                                                                <img onClick={this.visibleDetailCost.bind(this, index)} className="hinhanh" src={"http://localhost:80/" + data.hinhanh} alt="hinhanh" />
+                                                                <p className="text-truncate ttmonCArt text" onClick={this.visibleDetailCost.bind(this, index)}>{data.tenmon}</p>
+                                                                <p className="text-truncate ttmonCArt">
+                                                                    <span className="text-truncate ttmonCArt giabthg" onClick={this.visibleDetailCost.bind(this, index)}>{formatNumber.format(data.gia)}₫</span> &nbsp;
+                                                                    <span className="text-truncate ttmonCArt gia" onClick={this.visibleDetailCost.bind(this, index)}>{formatNumber.format(data.gia - (data.gia * data.km / 100))}₫</span>
+                                                                </p>
+                                                            </div>
+                                                        )
+                                                    }
+                                                }
+                                                )
+                                           }
+                                       </div>
+                                       <div className="col-12 mt-2 text-center">
+                                            <span className="border border-secondary p-1  pl-2 pr-2  mr-1" onClick={this.ChangePagi.bind(this, 'previous')}>	&lt;</span>
+                                            <span className="border border-secondary p-1 mr-1 bg-white">{"Trang " + this.state.current_page_cost + "/" + this.state.all_page_cost}</span>
+                                            <span className="border border-secondary p-1 pl-2 pr-2 " onClick={this.ChangePagi.bind(this, 'next')}>&gt;</span>
+                                        </div>
+                                   </div>
                                 ) : (
                                     <div className="col-12 text-center">
                                         <img src={Chipi} alt="hinhanh" className="chipi" />
@@ -790,11 +844,6 @@ class Home extends Component {
                                     </div>
                                 )
                             }
-                        </div>
-                        <div className="col-12 mt-2 text-center">
-                            <span className="border border-secondary p-1  pl-2 pr-2  mr-1" onClick={this.ChangePagi.bind(this, 'previous')}>	&lt;</span>
-                            <span className="border border-secondary p-1 mr-1 bg-white">{"Trang " + this.state.current_page_cost + "/" + this.state.all_page_cost}</span>
-                            <span className="border border-secondary p-1 pl-2 pr-2 " onClick={this.ChangePagi.bind(this, 'next')}>&gt;</span>
                         </div>
                     </div>
                     <div className={this.state.class_home2}>
@@ -1003,6 +1052,7 @@ class Home extends Component {
                                                        
                                                         <p className="nguyenlieu"><i>Số lượng còn lại: {this.state.dataDetail.soluong}</i></p>
                                                     </div>
+                                                    <div className={this.state.class_size}>
                                                     <div className="row mt-3 mb-3">
                                                         <span className="col-1 mt-1">Size: </span>
                                                         <select name="size" onChange={this.onSize} value={this.state.size} class="custom-select text-center col-2 ml-3">
@@ -1012,7 +1062,7 @@ class Home extends Component {
 
                                                         </select>
                                                     </div>
-
+                                                    </div>
                                                     <div>
                                                         <button className="quantity" type="button" onClick={this.DownQuantity}> - </button>
                                                         <input className="text-center inputQuantity" name="quantity" type="text" onChange={this.onChange} Value={this.state.quantity} />
@@ -1085,6 +1135,7 @@ class Home extends Component {
                                                        
                                                         <p className="nguyenlieu"><i>Số lượng còn lại: {this.state.dataDetail.soluong}</i></p>
                                                     </div>
+                                                    <div className={this.state.class_size}>
                                                     <div className="row mt-3 mb-3">
                                                         <span className="col-1 mt-1">Size: </span>
                                                         <select name="size" onChange={this.onSize} value={this.state.size} class="custom-select text-center col-2 ml-3">
@@ -1093,6 +1144,7 @@ class Home extends Component {
                                                             <option value="L">L</option>
 
                                                         </select>
+                                                    </div>
                                                     </div>
 
                                                     <div>
@@ -1169,13 +1221,16 @@ class Home extends Component {
                                                     <div className={this.state.class_ngaysx}>
                                                         <p className="nguyenlieu"><i>Số lượng còn lại: {this.state.dataDetail.soluong}</i></p>
                                                     </div>
+                                                    <div className={this.state.class_size}>
                                                     <div className="row mt-3 mb-3">
                                                         <span className="col-1 mt-1">Size: </span>
                                                         <select name="size" onChange={this.onSize} value={this.state.size} class="custom-select text-center col-2 ml-3">
                                                             <option value="S">S</option>
                                                             <option value="M">M</option>
                                                             <option value="L">L</option>
+
                                                         </select>
+                                                    </div>
                                                     </div>
                                                     <div>
                                                         <button className="quantity" type="button" onClick={this.DownQuantity}> - </button>
