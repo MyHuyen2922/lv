@@ -13,6 +13,7 @@ class CommentMGR extends Component {
             class_content: 'visible',
             nd: '',
             kh:'',
+            sdt:''
         }
     }
     componentDidMount() {
@@ -45,7 +46,7 @@ class CommentMGR extends Component {
                 console.log(error);
             })
     }
-    onReport = (idbl,nd,kh) => {
+    onReport = (idbl,nd,kh,sdt) => {
         let arr = [];
         for (let i = 0; i < this.state.allreport.length; i++) {
             if (this.state.allreport[i].idbl === idbl)
@@ -57,7 +58,8 @@ class CommentMGR extends Component {
             class_reason: 'col-6 offset-3 mt-5 pb-3 visible-ctdh',
             class_content: 'home-hidden',
             nd: nd,
-            kh:kh
+            kh:kh,
+            sdt: sdt
         });
     }
     hiddenDetail=()=>{
@@ -100,7 +102,7 @@ class CommentMGR extends Component {
                     </div>
                     <div>
                         <span className="font-weight-bold ">Nội dung:</span><span className="font-italic">{this.state.nd}</span><br /><br />
-                        <span className="font-weight-bold ">Khách hàng bình luận:</span><span className="font-italic">{this.state.kh}</span>
+                        <span className="font-weight-bold ">Khách hàng bình luận:</span><span className="font-italic">{this.state.kh} - {this.state.sdt}</span>
                     </div>
                     <div className="row col-12 ml-1">
                         <div className="col-5  mt-3 border p-3 text-center bggray font-weight-bold">Khách hàng báo xấu</div>
@@ -138,11 +140,11 @@ class CommentMGR extends Component {
                             if (data.cmt !== '') {
                                 return (
                                     <div key={index} className="row col-12">
-                                        <div className="col-1 border p-2 text-center"  onClick={this.onReport.bind(this, data.idbl,data.cmt,data.hoten)}>{data.idbl}</div>
-                                        <div className="col-2 border p-2 text-center"  onClick={this.onReport.bind(this, data.idbl,data.cmt,data.hoten)}>{data.tenmon}</div>
-                                        <div className="col-3 border p-2 text-center"  onClick={this.onReport.bind(this, data.idbl,data.cmt,data.hoten)}>{data.hoten}</div>
-                                        <div className="col-3 border p-2 text-center"  onClick={this.onReport.bind(this, data.idbl,data.cmt,data.hoten)}>{data.cmt}</div>
-                                        <div className="col-2 border p-2 text-center"  onClick={this.onReport.bind(this, data.idbl,data.cmt,data.hoten)}>{data.report}</div>
+                                        <div className="col-1 border p-2 text-center"  onClick={this.onReport.bind(this, data.idbl,data.cmt,data.hoten,data.sdt)}>{data.idbl}</div>
+                                        <div className="col-2 border p-2 text-center"  onClick={this.onReport.bind(this, data.idbl,data.cmt,data.hoten,data.sdt)}>{data.tenmon}</div>
+                                        <div className="col-3 border p-2 text-center"  onClick={this.onReport.bind(this, data.idbl,data.cmt,data.hoten,data.sdt)}>{data.hoten}</div>
+                                        <div className="col-3 border p-2 text-center"  onClick={this.onReport.bind(this, data.idbl,data.cmt,data.hoten,data.sdt)}>{data.cmt}</div>
+                                        <div className="col-2 border p-2 text-center"  onClick={this.onReport.bind(this, data.idbl,data.cmt,data.hoten,data.sdt)}>{data.report}</div>
                                         <div className="col-1 border p-2 text-center">
                                             <p onClick={this.DeleteComment.bind(this, data.idbl)}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-trash text-danger" viewBox="0 0 16 16">

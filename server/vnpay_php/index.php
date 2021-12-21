@@ -60,8 +60,8 @@
                                         continue;
                                     }
                                     else{
-                                        $giatt = number_format($gia[$i])." (VND)" ;
-                                        $thanhtien = number_format($gia[$i]*$soluong[$i])." (VND)" ;                                      
+                                        $giatt = number_format((int)$gia[$i])." (VND)" ;
+                                        $thanhtien = number_format((int)$gia[$i]*(float)$soluong[$i])." (VND)" ;                                      
                                         echo "<p class='hhh'>$tenmon[$i]</p>";
                                         echo"<p class='tt'>$soluong[$i]</p>";
                                         echo"<p class='tt'>$giatt</p>";
@@ -77,15 +77,15 @@
                 <div class="div-bottom">
                     <div class="row">
                         <div class="col-left">Tổng cộng: </div>
-                        <div class="col-right"><?php echo number_format($tongtien)." (VND)" ?></div>
+                        <div class="col-right"><?php echo number_format((float)$tongtien)." (VND)" ?></div>
                     </div>
                     <div class="row">
                         <div class="col-left">Tiền Ship: </div>
-                        <div class="col-right"><?php echo number_format($tienship)." (VND)" ?></div>
+                        <div class="col-right"><?php echo number_format((float)$tienship)." (VND)" ?></div>
                     </div>
                     <div class="row">
                         <div class="col-left">Số tiền phải thanh toán: </div>
-                        <div class="col-right"><?php echo number_format($tongtien + $tienship)." (VND)" ?></div>
+                        <div class="col-right"><?php echo number_format((float)$tongtien + $tienship)." (VND)" ?></div>
                     </div>
                 </div>
             <div>

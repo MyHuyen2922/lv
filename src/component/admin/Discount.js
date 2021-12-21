@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AdminAPI from '../../API/admin/AdminAPI';
 import DishAdminAPI from '../../API/DishAdminAPI';
 import UserAPI from '../../API/UserAPI';
+import Calendar from 'react-calendar';
 
 class Discount extends Component {
     constructor(props) {
@@ -15,7 +16,12 @@ class Discount extends Component {
             detail: [],
             kmm: '',
             from: '',
-            to: ''
+            to: '',
+            date: new Date(),
+            dateto: new Date(),
+            class_date: 'hidden',
+            class_dateto: 'hidden',
+            class_home: 'visible',
         }
     }
     onChange = (e) => {
@@ -27,17 +33,18 @@ class Discount extends Component {
     }
     Discount = () => {
         let thamso = new FormData();
+        var date =this.state.dateto.getFullYear()+'-'+(this.state.dateto.getMonth()+1)+ '-' + this.state.date.getDate();
+        var dateto = this.state.dateto.getFullYear()+'-'+(this.state.dateto.getMonth()+1)+'-'+this.state.dateto.getDate();
         thamso.append("km", this.state.km);
-        console.log(this.state.loai);
-        console.log(this.state.km);
         thamso.append("loai", this.state.loai);
-        thamso.append("from", this.state.from);
-        thamso.append("to", this.state.to);
+        thamso.append("from", date);
+        thamso.append("to", dateto);
         const api = new AdminAPI();
         api.DiscountAPI(thamso)
             .then(response => {
                 console.log(response);
                 if (response[0].code === "200") {
+                    this.componentDidMount();
                     alert("Đã cập nhật");
                     this.setState({
                         loai: 'all',
@@ -53,7 +60,7 @@ class Discount extends Component {
             .catch(error => {
                 console.log(error);
             })
-
+            this.componentDidMount();
     }
     componentDidMount() {
         const api = new AdminAPI();
@@ -126,12 +133,14 @@ class Discount extends Component {
             .then(response => {
                 console.log(response);
                 if (response[0].code === "200") {
+                    this.componentDidMount();
                     alert("Đã cập nhật");
                     this.setState({
                         kmm: '',
                         fromid: '',
                         toid: '',
                     })
+                    
                 }
                 else { alert("Vui lòng thử lại !!!"); }
             })
@@ -166,12 +175,65 @@ class Discount extends Component {
                 console.log(error);
             })
     }
+    onDateFrom = () => {
+        this.setState({
+            class_date: 'row col-12 mt-4 visible-search dcmoi',
+            class_home: 'home-hidden  bg-white',
+        })
+        window.scrollTo(0, 0);
+    }
+    onDateTo = () => {
+        this.setState({
+            class_dateto: 'row col-12 mt-4 visible-search dcmoi',
+            class_home: 'home-hidden bg-white',
+        })
+        window.scrollTo(0, 0);
+    }
+    ChangeDate = (value) => {
+        this.setState({
+            date: value,
+        })
+    }
+    ChangeDateTo = (value) => {
+        this.setState({
+            dateto: value,
+        })
+    }
+    hiddenDate = () => {
+        this.setState({
+            class_date: 'row col-12 hidden-search',
+            class_home: "content-visible",
+        })
+        window.scrollTo(0, 0);
+    }
+    hiddenDateTo = () => {
+        this.setState({
+            class_dateto: 'row col-12 hidden-search',
+            class_home: "content-visible",
+        })
+        window.scrollTo(0, 0);
+    }
     render() {
         console.log(this.state.dishAdmin);
         const formatNumber = new Intl.NumberFormat('de');
         return (
             <div className="col-12 ">
-                <form>
+                  <div className={this.state.class_date}>
+                        <div className="col-5 offset-4  bggreen border text-right">
+                            <Calendar className="ml-30 mt-3" onChange={this.ChangeDate} value={this.state.date} />
+                            <span onClick={this.hiddenDate} className="btn btn-success  mt-2 mb-2 mr-2">Lưu</span>
+                            <span onClick={this.hiddenDate} className="btn btn-secondary mt-2 mb-2">Trở lại</span>
+                        </div>
+                    </div>
+                    <div className={this.state.class_dateto}>
+                        <div className="col-5 offset-4  bggreen border text-right">
+                            <Calendar className="ml-30 mt-3" onChange={this.ChangeDateTo} value={this.state.dateto} />
+                            <span onClick={this.hiddenDateTo} className="btn btn-success mt-2 mr-2 mb-2">Lưu</span>
+                            <span onClick={this.hiddenDateTo} className="btn btn-secondary mt-2 mb-2">Trở lại</span>
+                        </div>
+                    </div>
+             <div className={this.state.class_home}>
+             <form>
                     <h4 className="text-center mt-3 colorgreen">CHƯƠNG TRÌNH KHUYẾN MÃI</h4>
                     <div className="row form-group col-12">
                         <select onChange={this.onChange} name="loai" id="loai" className="btn btn-success">
@@ -184,11 +246,23 @@ class Discount extends Component {
                         <input type="text" name="km" value={this.state.km} onChange={this.onChange} className="form-control col-5" placeholder="Nhập % khuyến mãi" />
                     </div>
                     <div className="row form-group col-12">
-                        <span className="mt-2">Từ:</span>&nbsp;
-                        <input type="text" value={this.state.from} name="from" onChange={this.onChange} className="form-control col-2" placeholder="yyyy-mm-dd" />
-                        <span className="mt-2 ml-4">Đến: </span>&nbsp;
-                        <input type="text" value={this.state.to} name="to" onChange={this.onChange} className="form-control col-2" placeholder="yyyy-mm-dd" />
-
+                      <div className='col-2'>Ngày bắt đầu:</div>
+                      <div className='col-2 border border-secondary start'>
+                        {this.state.date.getDate()}/ {this.state.date.getMonth() + 1}/ {this.state.date.getFullYear()}
+                      </div>
+                      <div className='col-4'>
+                        <span onClick={this.onDateFrom} className="col-1 text-right text-primary">Thay đổi</span>
+                      </div>
+                    </div>
+                    <div className="row form-group col-12">
+                      <div className='col-2'>Ngày kết thúc:</div>
+                      <div className='col-2 border border-secondary start'>
+                        {this.state.dateto.getDate()}/ {this.state.dateto.getMonth() + 1}/ {this.state.dateto.getFullYear()}  
+                      </div>
+                      <div className='col-4'>
+                        <span onClick={this.onDateTo} className="col-1 text-right text-primary">Thay đổi</span>
+                      </div>
+                     
                     </div>
                     <div className="row form-group col-12">
                         <p className="btn btn-outline-success" onClick={this.Discount}>Nhập</p>
@@ -214,7 +288,10 @@ class Discount extends Component {
                             this.state.discount.length > 0 ? (
                                 this.state.discount.map((data, index) => {
                                     var timefrom = new Date();
+                                    var start = new Date(data.tu);
                                     var timeto = new Date(data.den);
+                                    var batdau = start.getDate() +"/"+ (start.getMonth()+1)+"/"+start.getFullYear();
+                                    var ketthuc = timeto.getDate() +"/"+ (timeto.getMonth()+1) +"/"+ timeto.getFullYear();
                                     var time = timeto.getTime() - timefrom.getTime();
                                     if ("0" < time && time < "259200000") {
                                         if (data.loai === 'banhngot') {
@@ -224,8 +301,8 @@ class Discount extends Component {
                                                     <div className="col-2 border">{data.km} % </div>
                                                     <div className="col-2 border">Bánh Ngọt</div>
                                                     <div className="col-2 border">{data.km} % </div>
-                                                    <div className="col-2 border">{data.tu}</div>
-                                                    <div className="col-2 border">{data.den}</div>
+                                                    <div className="col-2 border">{batdau}</div>
+                                                    <div className="col-2 border">{ketthuc}</div>
                                                     <div className="col-1 border">
                                                         <p onClick={this.DeleteDiscountDish.bind(this, data.idkm)}>
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-trash mt-1 text-danger" viewBox="0 0 16 16">
@@ -244,8 +321,8 @@ class Discount extends Component {
                                                     <div className="col-2 border">{data.tenmon}</div>
                                                     <div className="col-2 border">Trà sữa</div>
                                                     <div className="col-2 border">{data.km} % </div>
-                                                    <div className="col-2 border">{data.tu}</div>
-                                                    <div className="col-2 border">{data.den}</div>
+                                                    <div className="col-2 border">{batdau}</div>
+                                                    <div className="col-2 border">{ketthuc}</div>
                                                     <div className="col-1 border">
                                                         <p onClick={this.DeleteDiscountDish.bind(this, data.idkm)}>
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-trash mt-1 text-danger" viewBox="0 0 16 16">
@@ -266,8 +343,8 @@ class Discount extends Component {
                                                     <div className="col-2 border">{data.tenmon}</div>
                                                     <div className="col-2 border">Bánh Ngọt</div>
                                                     <div className="col-2 border">{data.km} % </div>
-                                                    <div className="col-2 border">{data.tu}</div>
-                                                    <div className="col-2 border">{data.den}</div>
+                                                    <div className="col-2 border">{batdau}</div>
+                                                    <div className="col-2 border">{ketthuc}</div>
                                                     <div className="col-1 border">
                                                         <p onClick={this.DeleteDiscountDish.bind(this, data.idkm)}>
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-trash mt-1 text-danger" viewBox="0 0 16 16">
@@ -286,8 +363,8 @@ class Discount extends Component {
                                                     <div className="col-2 border">{data.tenmon}</div>
                                                     <div className="col-2 border">Trà sữa</div>
                                                     <div className="col-2 border">{data.km} % </div>
-                                                    <div className="col-2 border">{data.tu}</div>
-                                                    <div className="col-2 border">{data.den}</div>
+                                                    <div className="col-2 border">{batdau}</div>
+                                                    <div className="col-2 border">{ketthuc}</div>
                                                     <div className="col-1 border">
                                                         <p onClick={this.DeleteDiscountDish.bind(this, data.idkm)}>
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-trash mt-1 text-danger" viewBox="0 0 16 16">
@@ -308,8 +385,8 @@ class Discount extends Component {
                                                     <div className="col-2 border">{data.tenmon}</div>
                                                     <div className="col-2 border">Bánh Ngọt</div>
                                                     <div className="col-2 border">{data.km} % </div>
-                                                    <div className="col-2 border">{data.tu}</div>
-                                                    <div className="col-2 border">{data.den}</div>
+                                                    <div className="col-2 border">{batdau}</div>
+                                                    <div className="col-2 border">{ketthuc}</div>
                                                     <div className="col-1 border">
                                                         <p onClick={this.DeleteDiscountDish.bind(this, data.idkm)}>
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-trash mt-1 text-danger" viewBox="0 0 16 16">
@@ -328,8 +405,8 @@ class Discount extends Component {
                                                     <div className="col-2 border">{data.tenmon}</div>
                                                     <div className="col-2 border">Trà sữa</div>
                                                     <div className="col-2 border">{data.km} % </div>
-                                                    <div className="col-2 border">{data.tu}</div>
-                                                    <div className="col-2 border">{data.den}</div>
+                                                    <div className="col-2 border">{batdau}</div>
+                                                    <div className="col-2 border">{ketthuc}</div>
                                                     <div className="col-1 border">
                                                         <p onClick={this.DeleteDiscountDish.bind(this, data.idkm)}>
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-trash mt-1 text-danger" viewBox="0 0 16 16">
@@ -390,7 +467,7 @@ class Discount extends Component {
                                                 {data.nguyenlieu}
                                             </div>
                                             <div className="col-1 detailDish ">
-                                                <img src={'http://localhost:80/' + data.hinhanh} alt="hinhmon" className="hinhanhAdmin" />
+                                                <img src={'http://localhost:80/' + data.hinhanh} alt="hinhmon" className="hinhanhAdmin mt-3" />
                                             </div>
                                             <div className="col-2 detailDish">
                                                 <p onClick={this.Detail.bind(this, index)} className="btn btn-success mt-3 ml-3">Chọn</p>
@@ -402,6 +479,7 @@ class Discount extends Component {
                         }
                     </div>
                 </form>
+             </div>
             </div>
         );
     }

@@ -32,6 +32,11 @@ background-color: #f8e590;
 .aaa{
   border: 3px solid blue;
 }
+.start{
+  margin-left: -52px;
+  height: 30px;
+  margin-right: 5px;
+}
 .tenquan{
   font-size: 20px;
   font-family:'Courier New', Courier, monospace

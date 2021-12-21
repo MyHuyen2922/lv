@@ -307,7 +307,7 @@ class detailOrders extends Component {
             thamso.append("gia[]", this.state.dish[i].giagh);
             sl += "|" + this.state.dish[i].sl;
             size += "|" + this.state.dish[i].size;
-            gia += "|" + this.state.dish[i].gia;
+            gia += "|" + this.state.dish[i].giagh;
             tenmon += "|" + this.state.dish[i].tenmon;
         }
         //var today = new Date();

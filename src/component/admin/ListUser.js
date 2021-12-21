@@ -44,7 +44,7 @@ class ListUser extends Component {
     render() {
         return (
             <div>
-                <div className="col-12 p-2 bradmin">
+                <div className="col-12 p-2">
                     <div className="text-center mb-3 mt-3"><h4>Danh Sách Khách Hàng</h4></div>
                     <div className="row col-12 ml-1 text-center  font-weight-bold">
                         <div className="col-1 border p-2 bggray">Mã</div>

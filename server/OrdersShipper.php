@@ -2,7 +2,7 @@
     include 'connect.php';
     date_default_timezone_set("Asia/Ho_Chi_Minh");
     $today = getdate();
-    $now = ($today['mday']-1)."/".$today['mon']."/".$today['year'];
+    $now = ($today['mday'])."/".$today['mon']."/".$today['year'];
     if($_POST['condition'] === 'now'){
         $sql = "SELECT * FROM `donhang` d JOIN `khachhang` k ON `d`.`idkh` = `k`.`idkh` WHERE `d`.`ngayban`='".$now."' AND `d`.`hinhthuc` ='Giao hàng' ";    
  

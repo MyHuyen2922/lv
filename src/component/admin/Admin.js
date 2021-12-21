@@ -8,6 +8,7 @@ import { Redirect } from 'react-router-dom';
 import add from '../../img/add.png';
 import UserAPI from '../../API/UserAPI';
 import Chipi from '../../img/chipi.png';
+import Calendar from 'react-calendar';
 
 class Admin extends Component {
     constructor(props) {
@@ -44,6 +45,10 @@ class Admin extends Component {
             idmon_cake:'',
             class_con:'hidden',
             con:'off',
+            date: new Date(),
+            dateto: new Date(),
+            class_date: 'hidden',
+            class_dateto: 'hidden',
         }
         this.visibleEdit = this.visibleEdit.bind(this);
         this.hiddenEdit = this.hiddenEdit.bind(this);
@@ -73,7 +78,10 @@ class Admin extends Component {
                     type: type,
                     cake: response,
                     class_con:'hidden',
-                    con:'off'
+                    con:'off',
+                    class_date: 'row col-12 hidden-search',
+                    class_dateto: 'row col-12 hidden-search',
+                    class_content: "col-9 mt-3 ml-3 border border-secondary bg-white content-visible",
                 });
                 console.log(Number(this.state.cake));
             })
@@ -88,7 +96,10 @@ class Admin extends Component {
             class_search: "row col-12 ml-1 hidden-search",
             class_stop: "row col-12 ml-1 hidden",
             class_con:'hidden',
-            con:'off'
+            con:'off',
+            class_date: 'row col-12 hidden-search',
+            class_dateto: 'row col-12 hidden-search',
+            class_content: "col-9 mt-3 ml-3 border border-secondary bg-white content-visible",
         })
     }
     doanhThu = () => {
@@ -97,7 +108,10 @@ class Admin extends Component {
             class_search: "row col-12 ml-1 hidden-search",
             class_stop: "row col-12 ml-1 hidden",
             class_con:'hidden',
-            con:'off'
+            con:'off',
+            class_date: 'row col-12 hidden-search',
+            class_dateto: 'row col-12 hidden-search',
+            class_content: "col-9 mt-3 ml-3 border border-secondary bg-white content-visible",
         })
     }
     ShipperMGR = () => {
@@ -106,7 +120,10 @@ class Admin extends Component {
             class_search: "row col-12 ml-1 hidden-search",
             class_stop: "row col-12 ml-1 hidden",
             class_con:'hidden',
-            con:'off'
+            con:'off',
+            class_date: 'row col-12 hidden-search',
+            class_dateto: 'row col-12 hidden-search',
+            class_content: "col-9 mt-3 ml-3 border border-secondary bg-white content-visible",
         })
     }
     UserMGR = () => {
@@ -115,7 +132,10 @@ class Admin extends Component {
             class_search: "row col-12 ml-1 hidden-search",
             class_stop: "row col-12 ml-1 hidden",
             class_con:'hidden',
-            con:'off'
+            con:'off',
+            class_date: 'row col-12 hidden-search',
+            class_dateto: 'row col-12 hidden-search',
+            class_content: "col-9 mt-3 ml-3 border border-secondary bg-white content-visible",
         })
     }
     Discount = () => {
@@ -124,7 +144,10 @@ class Admin extends Component {
             class_search: "row col-12 ml-1 hidden-search",
             class_stop: "row col-12 ml-1 hidden",
             class_con:'hidden',
-            con:'off'
+            con:'off',
+            class_date: 'row col-12 hidden-search',
+            class_dateto: 'row col-12 hidden-search',
+            class_content: "col-9 mt-3 ml-3 border border-secondary bg-white content-visible",
         })
     }
     Comment = () => {
@@ -133,7 +156,10 @@ class Admin extends Component {
             class_search: "row col-12 ml-1 hidden-search",
             class_stop: "row col-12 ml-1 hidden",
             class_con:'hidden',
-            con:'off'
+            con:'off',
+            class_date: 'row col-12 hidden-search',
+            class_dateto: 'row col-12 hidden-search',
+            class_content: "col-9 mt-3 ml-3 border border-secondary bg-white content-visible",
         })
     }
     onForm = (h) => {
@@ -146,7 +172,7 @@ class Admin extends Component {
             class_content: 'hidden',
             class_admin: 'hidden',
             class_con:'hidden',
-            con:'off'
+            con:'off',
         });
     }
 
@@ -481,20 +507,23 @@ class Admin extends Component {
     }
     Submit_Consignment = () => {
         let thamso = new FormData();
+        var date =this.state.dateto.getFullYear()+'-'+(this.state.dateto.getMonth()+1)+ '-' + this.state.date.getDate();
+        var dateto = this.state.dateto.getFullYear()+'-'+(this.state.dateto.getMonth()+1)+'-'+this.state.dateto.getDate();
         thamso.append("idmon", this.state.idmon_cake);
         thamso.append("sl", this.state.number_con);
-        thamso.append("ngaysx", this.state.ngaysx_con);
-        thamso.append("hansd", this.state.hansd_con);
+        thamso.append("ngaysx", date);
+        thamso.append("hansd", dateto);
         const api = new AdminAPI();
         api.Add_ConsignmentAPI(thamso)
         .then(response =>{
             console.log(response);
             alert("Đã thêm lô hàng thành công !!!");
+            this.componentDidMount();
             this.setState({
                 name_cake: '---Chọn món---',
                 number_con:'',
-                ngaysx_con:'',
-                hansd_con:'',
+                date: new Date(),
+                dateto: new Date(),
             })
         })
         .catch(err =>{
@@ -502,9 +531,11 @@ class Admin extends Component {
         })
         
     }
-    onDeleteCon =(idlo)=>{
+    onDeleteCon =(idlo, sl, idmon)=>{
         let thamso = new FormData();
         thamso.append("idlo",idlo);
+        thamso.append("sl", sl);
+        thamso.append("idmon", idmon)
         const api = new AdminAPI();
         api.Delete_ConsignmentAPI(thamso)
         .then(response =>{
@@ -529,6 +560,44 @@ class Admin extends Component {
                 class_con:'hidden',
             })
         }
+    }
+    onDateFrom = () => {
+        this.setState({
+            class_date: 'row col-12 mt-4 ml-5 visible-search dcmoi',
+            class_content: 'home-hidden col-9 mt-3 ml-3 border border-secondary bg-white',
+        })
+        window.scrollTo(0, 0);
+    }
+    onDateTo = () => {
+        this.setState({
+            class_dateto: 'row col-12 mt-4 ml-5 visible-search dcmoi',
+            class_content: 'home-hidden col-9 mt-3 ml-3 border border-secondary bg-white',
+        })
+        window.scrollTo(0, 0);
+    }
+    ChangeDate = (value) => {
+        this.setState({
+            date: value,
+        })
+    }
+    ChangeDateTo = (value) => {
+        this.setState({
+            dateto: value,
+        })
+    }
+    hiddenDate = () => {
+        this.setState({
+            class_date: 'row col-12 hidden-search',
+            class_content: "col-9 mt-3 ml-3 border border-secondary bg-white content-visible",
+        })
+        window.scrollTo(0, 0);
+    }
+    hiddenDateTo = () => {
+        this.setState({
+            class_dateto: 'row col-12 hidden-search',
+            class_content: "col-9 mt-3 ml-3 border border-secondary bg-white content-visible",
+        })
+        window.scrollTo(0, 0);
     }
     render() {
         console.log(this.state.cake_consignment);
@@ -557,6 +626,20 @@ class Admin extends Component {
                     <p className="listfunc dropdown-item" onClick={this.ShipperMGR}>Quản Lý Shipper</p>
                     <p className="listfunc dropdown-item"> <Logout /></p>
                 </div>
+                <div className={this.state.class_date}>
+                        <div className="col-5 offset-4  bggreen border text-center">
+                            <Calendar className="ml-30 mt-3" onChange={this.ChangeDate} value={this.state.date} />
+                            <span onClick={this.hiddenDate} className="btn btn-success mt-2 mr-2 mb-2 luu">Lưu</span>
+                            <span onClick={this.hiddenDate} className="btn btn-secondary mt-2 mb-2">Trở lại</span>
+                        </div>
+                    </div>
+                    <div className={this.state.class_dateto}>
+                        <div className="col-5 offset-4  bggreen border text-center">
+                            <Calendar className="ml-30 mt-3" onChange={this.ChangeDateTo} value={this.state.dateto} />
+                            <span onClick={this.hiddenDateTo} className="btn btn-success mt-2 mr-2 mb-2 luu">Lưu</span>
+                            <span onClick={this.hiddenDateTo} className="btn btn-secondary mt-2 mb-2">Trở lại</span>
+                        </div>
+                    </div>
                 <div id="admin" className={this.state.class_content}>
                     <div className="row ">
                         <div className="col-12">
@@ -666,10 +749,10 @@ class Admin extends Component {
                                                 <div className="row tieude col-12 text-center font-weight-bold">
                                                     <div className="col-3 mt-2">Tên món</div>
                                                     <div className="col-2 mt-2">Giá</div>
-                                                    <div className="col-2 mt-2">Nguyên liệu</div>
-                                                    <div className="col-2 mt-2">Dinh dưỡng</div>
-                                                    <div className="col-1 ml-3 mt-2">Hình</div>
-                                                    <div className="col-2 mt-2"></div>
+                                                    <div className="col-4 mt-2">Nguyên liệu</div>
+                                                    <div className="col-3 mt-2">Dinh dưỡng</div>
+                                                 
+                                              
                                                 </div>
                                                 {this.state.stop.map((data, index) =>
                                                     <div key={index}>
@@ -681,23 +764,13 @@ class Admin extends Component {
                                                                 <div className="col-2 detailDish ">
                                                                     {formatNumber.format(data.gia)}₫
                                                                 </div>
-                                                                <div className="col-2 detailDish ">
+                                                                <div className="col-4 detailDish ">
                                                                     {data.nguyenlieu}
                                                                 </div>
-                                                                <div className="col-2 detailDish ">
+                                                                <div className="col-3 detailDish ">
                                                                 {String(data.tpdd).replaceAll("|",",")}
                                                                 </div>
-                                                                <div className="col-1 detailDish ">
-                                                                    <img src={'http://localhost:80/' + data.hinhanh} alt="hinhmon" className="hinhanhAdmin" />
-                                                                </div>
-                                                                <div className="col-2 detailDish">
-                                                                    <span onClick={this.visibleEditStop.bind(this, index)} >
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-pencil-square mt-1 text-success" viewBox="0 0 16 16">
-                                                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.30.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                                        </svg>
-                                                                    </span>
-                                                                </div>
+                                                             
                                                             </div>
                                                         </form>
                                                     </div>
@@ -841,8 +914,8 @@ class Admin extends Component {
                                         Tên món
                                     </div>
                                     <div class="dropdown col-8">
-                                        <button class="btn btn-secondary col-12" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                {this.state.name_cake}
+                                        <button class="btn btn-outline-info col-12" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {this.state.name_cake}
                                         </button>
                                         <div class="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
                                             {
@@ -869,18 +942,24 @@ class Admin extends Component {
                                     <div className="col-4">
                                         Ngày sản xuất
                                     </div>
-                                    <div class="input-group col-8">
-                                        <input type="text" onChange={this.onChange} class="form-control" name="ngaysx_con" aria-describedby="basic-addon1"/>
-                                    </div>
+                                    <div className="col-8 ">
+                                <span className="col-8 text-right colorlight">
+                                {this.state.date.getDate()}/ {this.state.date.getMonth() + 1}/ {this.state.date.getFullYear()}
+                                </span>
+                                <span onClick={this.onDateFrom} className="col-1 text-right text-primary">Thay đổi</span>
+                                </div>
                                 </div>
 
                                 <div className="row mt-2">
                                     <div className="col-4">
                                         Hạn sử dụng
                                     </div>
-                                    <div class="input-group col-8">
-                                        <input type="text" name="hansd_con" onChange={this.onChange}class="form-control" aria-describedby="basic-addon1"/>
-                                    </div>
+                                    <div className="col-8 ">
+                                <span className="col-8 text-right colorlight">
+                                {this.state.dateto.getDate()}/ {this.state.dateto.getMonth() + 1}/ {this.state.dateto.getFullYear()}  
+                                </span>
+                                <span onClick={this.onDateTo} className="col-1 text-right text-primary">Thay đổi</span>
+                                </div>
                                 </div>
                                 <div className="col-12 text-right mt-2">
                                     <p className="btn btn-success" onClick={this.Submit_Consignment}>Cập nhật</p>
@@ -900,9 +979,9 @@ class Admin extends Component {
                                     this.state.lohang.map((lo, index)=>
                                     {
                                         var ngaysx = new Date(lo.ngaysx);
-                                        var ngaysx1 = ngaysx.getDate()+"/"+ ngaysx.getMonth()+"/"+ ngaysx.getFullYear();
+                                        var ngaysx1 = ngaysx.getDate()+"/"+ (ngaysx.getMonth()+1)+"/"+ ngaysx.getFullYear();
                                         var hansd = new Date(lo.hansd);
-                                        var hansd1 = hansd.getDate()+"/"+ hansd.getMonth()+"/"+ hansd.getFullYear();
+                                        var hansd1 = hansd.getDate()+"/"+ (hansd.getMonth()+1)+"/"+ hansd.getFullYear();
                                         var ngaysx = new Date();
                                         var due = hansd.getTime() - ngaysx.getTime();
                                         if ("0" < due && due < "259200000") {
@@ -915,7 +994,7 @@ class Admin extends Component {
                                                         <div className="col-2 p-2 border">{ngaysx1}</div>
                                                         <div className="col-2 p-2 border">{hansd1}</div>
                                                         <div className="col-1 mt-2 border">
-                                                            <span onClick={this.onDeleteCon.bind(this, lo.id_lo)} >
+                                                            <span onClick={this.onDeleteCon.bind(this, lo.id_lo,lo.soluong, lo.idmon)} >
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-trash mt-1 text-danger" viewBox="0 0 16 16">
                                                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
                                                                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
@@ -936,7 +1015,7 @@ class Admin extends Component {
                                                         <div className="col-2 p-2 border">{ngaysx1}</div>
                                                         <div className="col-2 p-2 border">{hansd1}</div>
                                                         <div className="col-1 mt-2 border">
-                                                        <span onClick={this.onDeleteCon.bind(this, lo.id_lo)} >
+                                                        <span onClick={this.onDeleteCon.bind(this, lo.id_lo,lo.soluong, lo.idmon)} >
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-trash mt-1 text-danger" viewBox="0 0 16 16">
                                                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
                                                                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
@@ -957,7 +1036,7 @@ class Admin extends Component {
                                                         <div className="col-2 p-2 border">{ngaysx1}</div>
                                                         <div className="col-2 p-2 border">{hansd1}</div>
                                                         <div className="col-1 p-2 border">
-                                                        <span onClick={this.onDeleteCon.bind(this, lo.id_lo)} >
+                                                        <span onClick={this.onDeleteCon.bind(this, lo.id_lo, lo.soluong, lo.idmon)} >
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-trash mt-1 text-danger" viewBox="0 0 16 16">
                                                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
                                                                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />

@@ -14,9 +14,9 @@ class Sales extends Component {
             labels: {},
             list: ['Ngày', 'Tháng', 'Năm', 'Món', 'Hình thức nhận'],
             type: 'Ngày',
-            day: '',
-            month: '',
-            year: '',
+            day: 1,
+            month: 1,
+            year: 2021,
             tongdoanhthu: 0,
 
         }
@@ -375,6 +375,24 @@ class Sales extends Component {
             })
         }
     }
+    onChangeDay = (e) =>{
+        this.setState({
+            day: e.target.value
+        })
+    }
+    onChangeMonth = (e) =>{
+        this.setState({
+            month: e.target.value
+        })
+    }
+    onChangeYear = (e) =>{
+        this.setState({
+            year: e.target.value
+        })
+    }
+    Test = () =>{
+        alert(this.state.year);
+    }
     render() {
         if(Object.keys(this.state.thongkedoanhthu).length === 0)
             return null;
@@ -383,9 +401,67 @@ class Sales extends Component {
             <div className="iframeadmin">
                 <h4 className="col-12 text-center mt-3 colorgreen">THỐNG KÊ DOANH THU</h4>
                 <div className="mt-3 mb-3 col-11 ml-5 text-right">
-                    <input type="number" onChange={this.onChange} min="1" name="day" placeholder="Ngày" className="inpSales mr-2" />
-                    <input type="number" onChange={this.onChange} min="1" name="month" placeholder="Tháng" className="inpSales mr-2" />
-                    <input type="number" onChange={this.onChange} min="1" name="year" placeholder="Năm" className="inpSales mr-2" />
+                <select class="form-select inpSales mr-2 border border-success" onChange={this.onChangeDay} aria-label="Default select example">
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+                <select class="form-select inpSales mr-2 border border-success" onChange={this.onChangeMonth} aria-label="Default select example">
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <select class="form-select inpSales mr-2 border border-success" onChange={this.onChangeYear} aria-label="Default select example">
+                    <option value="2020">2020</option>
+                    <option value="2021" selected>2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                    <option value="2031">2031</option>
+                </select>
                     <span onClick={this.Search.bind(this, this.state.giaodich, this.state.mon)} className="inpSales border p-2 pl-3 pr-3 bg-success text-light">Tìm</span>
                 </div>
                 <div className="dropdown mt-3 mb-3 col-11 ml-5 text-right">
