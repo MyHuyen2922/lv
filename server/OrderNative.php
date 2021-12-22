@@ -2,7 +2,7 @@
     include 'connect.php';
     date_default_timezone_set("Asia/Ho_Chi_Minh");
     $today = getdate();
-    $now = ($today['mday']+1)."/".$today['mon']."/".$today['year'];
+    $now = ($today['mday'])."/".$today['mon']."/".$today['year'];
     if($_POST['trangthai'] == 1){
         if($_POST['condition'] == 'all'){
             $sql = "SELECT * FROM `donhang` WHERE `ngayban`='".$now."' AND `hinhthuc` ='Giao hàng' AND `trangthai`='Chờ xác nhận' "; 

@@ -257,7 +257,7 @@ class ActionSearchPriceSize(Action):
                 if len(result) == 0:
                     dispatcher.utter_message("Rất tiếc món của bạn tìm không có trong menu cửa hàng bên em.")
                 else:
-                    dispatcher.utter_message("Gửi quý khách các món liên quan đến {} !!!".format(str(keyword)))
+                    dispatcher.utter_message("Gửi quý khách các món liên quan !!!")
                     for i in result:
                         dict ={}
                         if size == 's':
@@ -283,12 +283,12 @@ class ActionListDiscount(Action):
             connect = mysql.connector.connect(host='127.0.0.1', user ='root', password ='', database='database')
             if connect.is_connected():
                 cursor = connect.cursor()
-                cursor.execute("SELECT `m`.`idmon`,tenmon,gia FROM `khuyenmai` k JOIN `mon` m ON `k`.`idmon` = `m`.`idmon`")
+                cursor.execute("SELECT `m`.`idmon`,tenmon,gia,km FROM `khuyenmai` k JOIN `mon` m ON `k`.`idmon` = `m`.`idmon`")
                 result = cursor.fetchall()
                 dispatcher.utter_message("Gửi quý khách danh sách các món đang có khuyến mãi bên em, vui lòng nhấp vào để xem chi tiết !!!")
                 for i in result:
                     dict ={}
-                    dict['text'] = str(i[1] + "|Giá: {:,} VNĐ".format(int(i[2])))
+                    dict['text'] = str(i[1] + "|Giá: {:,} VNĐ".format(int(i[2])-(int(i[2])/100*int(i[3]))))
                     dict['action'] = str(i[0])
                     dict['img'] = None    
                     dispatcher.utter_message(json_message=dict)

@@ -13,7 +13,7 @@ class Header extends Component {
                     <div className="col-3 mt-2">
                         <Link to="/">
                             <img onClick={this.showDish} src={Logo} className="logo" alt="logo" />
-                        </Link>
+                        </Link> <span className='tenquan' >CHERRY STORE</span>
                     </div>
                     <div className="col-5">
                         <Search />
