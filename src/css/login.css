@@ -1,0 +1,36 @@
+.tt{
+    padding-bottom:60px;
+}
+.inp{
+    height: 50px;
+}
+.sub{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    padding-top: 10px ;
+}
+.login{
+    box-shadow: 0.5px 0.5px 2.5px 2.5px pink;
+    padding: 15px;
+    margin-top: 20px;
+}
+.dn{
+    width: 510px;
+}
+.but{
+    width: 200px;
+    margin-left: -10px;
+}
+.fb{
+    margin-bottom: 5px;
+}
+.logologin{
+    width: 325px;
+    height: 325px;
+}
+.dki{
+
+    width: 200px;
+}
+

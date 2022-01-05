@@ -1,0 +1,188 @@
+version: "2.0"
+
+intents:
+  - greet
+  - give_name
+  - func_list
+  - thanks
+  - goodbye
+  - name
+  - name_bot
+  - age
+  - open_store
+  - order 
+  - discount
+  - money
+  - ship
+  - fee_ship
+  - nk_fee_ship
+  - bt_fee_ship
+  - om_fee_ship
+  - tn_fee_ship
+  - cr_fee_ship
+  - bestselling
+  - address
+  - take_away
+  - topping
+  - topping_cake
+  - add_topping
+  - receive
+  - phone
+  - email
+  - price_high
+  - price_low
+  - price_high_cake
+  - price_high_milk
+  - price_low_cake
+  - price_low_milk
+  - search_dish
+
+entities:
+  - cust_sex
+  - cust_name
+  - cust_name_dish
+
+slots:
+  cust_sex:
+    auto_fill: true
+    type: text
+  cust_name: 
+    auto_fill: true
+    type: text
+
+responses:
+
+  utter_email:
+  - text: "Anh/chị có thể liên lạc với cửa hàng qua email myhuyen2922@gmail.com !"
+  - text: "Email của cửa hàng em là myhuyen2922@gmail.com !"
+
+  utter_phone:
+  - text: "Anh/chị có thể liên lạc với cửa hàng qua số điện thoại 0812323231 !"
+  - text: "Số điện thoại của cửa hàng em là 0812323231 ạ"
+  - text: "Dạ em xin gửi quý khách số điện thoại của cửa hàng em ạ 0812323231 !"
+
+  utter_receive:
+  - text: "Dạ bên em có 2 hình thức nhận món. Quý khách có thể nhận món tại cửa hàng hoặc đặt shiiper giao hàng đến tận nơi ạ !!!"  
+
+  utter_add_topping:
+  - text: "Dạ bánh ngọt bên em sẽ có hương vị và các loại topping khác nhau cho từng loại bánh ạ !!!"  
+
+  utter_topping_cake:
+  - text: "Dạ bánh ngọt bên em sẽ có hương vị và các loại topping khác nhau cho từng loại bánh ạ !!!"  
+
+  utter_topping:
+  - text: "Dạ trà sữa bên em sẽ có 5 loại topping, gồm: khúc bạch, trân châu đen, thạch phô mai, plan trứng, thạch củ năng ạ !!!"  
+
+  utter_take_away:
+  - text: "Dạ cửa hàng có không gian nhỏ nên chỉ phục vụ take away thôi ạ !!!"  
+
+  utter_order:
+  - text: "Dạ khi đặt món quý khách cần có tài khoản. Và vào website chọn đặt mua và làm theo hướng dẫn là được ạ. Quá dễ dàng phải không nào !!!"  
+
+  utter_address:
+  - text: "Dạ cửa hàng Cherry nằm ở 112/12 đường 3/2, phường Hưng Lợi, quận Ninh Kiều, Cần Thơ ạ !!!"  
+
+  utter_cr_fee_ship:
+  - text: "Dạ phí ship quận Cái Răng là 50.000 VNĐ ạ !!!"  
+
+  utter_om_fee_ship:
+  - text: "Dạ phí ship quận Ô Môn là 35.000 VNĐ ạ !!!"  
+
+  utter_bt_fee_ship:
+  - text: "Dạ phí ship quận Bình Thủy là 25.000 VNĐ ạ !!!"  
+
+  utter_tn_fee_ship:
+  - text: "Dạ phí ship quận Thốt Nốt là 30.000 VNĐ ạ !!!"  
+
+  utter_nk_fee_ship:
+  - text: "Dạ phí ship quận Ninh Kiều là 15.000 VNĐ ạ !!!"  
+
+  utter_fee_ship:
+  - text: "Dạ phí ship tùy quận sẽ khác nhau ạ !!!"
+
+  utter_ship:
+  - text: "Dạ bên em ship trong tỉnh Cần Thơ ạ. Phí Ship tính theo từng quận khác nhau ạ !!!"
+
+  utter_money:
+  - text: "Dạ bên em áp dụng hai hình thức thanh toán. Quý khách có thể thanh toán khi nhận món hoặc thanh toán trước qua VN Pay/ Paypal ạ !!!"
+
+  utter_discount:
+  - text: "Dạ bên em áp dụng khuyến mãi cho từng món/ từng loại khác nhau. Vào mục khuyến mãi để xem chi tiết nhé !!!"
+
+  utter_open_store:
+  - text: "Dạ từ thứ 2 đến thử 6 cửa hàng mở cửa từ 8:00 đến 21:00. riêng thứ 7 & chủ nhật thì từ 9:00 đến 22:00 ạ !!!"
+
+  utter_age:
+  - text: "Dạ em 10 tuổi ạ !!!"
+
+  utter_name_bot:
+  - text: "Dạ em tên là Cherry Bot siêu dễ thương. Cherry Bot có thể giúp gì cho {cust_sex} ạ!!!"
+
+  utter_name:
+  - text: "Dạ cửa hàng em tên Cherry ạ ! Chúng em sẽ mang đến cho quý khách những chiếc bánh và những ly trà sữa thật ngọt ngào!!!"
+  - text: "Dạ cửa hàng của em tên Cherry. Quý khách còn thắc mắc gì không ạ?"
+  
+  utter_greet:
+  - text: "Xin chào. Quý khách có thể cho biết tên để em tiện xưng hô được không ạ ?"
+  - text: "Xin chào. Mình có thể giúp gì cho bạn ?"
+  - text: "Xin chào quý khách. Anh/ chị cần tư  vấn gì ạ ?"
+
+  utter_greet_with_name:
+  - text: "Kính chào {cust_sex} {cust_name}. Cherry Store có thể giúp gì cho {cust_sex} {cust_name} ạ?"
+
+  utter_func_list:
+  - text: "Em có thể làm được nhiều thứ: hát, đọc thơ,... NHưng giờ em chỉ chat thôi !!!"
+
+  utter_thanks:
+  - text: "Cảm ơn quý khách đã khen ạ"
+  - text: "Dạ không có gì, đó là trách nhiệm của em"
+
+  utter_goodbye:
+  - text: "Bye Bye"
+  - text: "Kính chào tạm biệt và mong sớm gặp lại quý khách !!!"
+  - text: "Kính chào tạm biệt và chúc quý khách một ngày tốt lành !!!"
+
+  utter_default:
+  - text: "Thưa quý khách, hiện tại em chưa hiểu yêu cầu của quý khách !!!"
+
+actions:
+  - utter_greet
+  - utter_greet_with_name
+  - utter_func_list
+  - utter_thanks
+  - utter_goodbye
+  - utter_name
+  - utter_name_bot
+  - utter_age
+  - utter_discount
+  - utter_money
+  - utter_ship
+  - utter_fee_ship
+  - utter_nk_fee_ship
+  - utter_cr_fee_ship
+  - utter_bt_fee_ship
+  - utter_om_fee_ship
+  - utter_tn_fee_ship
+  - action_bestselling
+  - utter_address
+  - utter_order
+  - utter_take_away
+  - utter_topping
+  - utter_topping_cake
+  - utter_add_topping
+  - utter_receive
+  - utter_default
+  - utter_phone
+  - utter_email
+  - action_price_high
+  - action_price_low
+  - action_price_low_cake
+  - action_price_low_milk
+  - action_price_high_cake
+  - action_price_high_milk
+  - action_search_dish
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

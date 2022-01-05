@@ -1,0 +1,11 @@
+<?php
+    include 'connect.php';
+    $sql= "SELECT * FROM `report` r JOIN `khachhang` k ON r.`idkh`= k.`idkh`";
+    $result = $connect->query($sql);
+    $res=[];
+    while($row=$result->fetch_assoc()){
+        $res[] =$row;
+    }
+    echo json_encode($res, JSON_PRETTY_PRINT);
+    $connect->close(); 
+?>

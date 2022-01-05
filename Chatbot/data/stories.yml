@@ -1,0 +1,116 @@
+version: "2.0"
+
+stories:
+##Chào hỏi đưa tên
+- story: story1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: give_name
+  - action: utter_greet_with_name
+  - intent: address
+  - action: utter_address
+  - intent: phone
+  - action: utter_phone
+  - intent: email
+  - action: utter_email
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: story2
+  steps:
+  - intent: thanks
+  - action: utter_thanks
+
+- story: story3
+  steps:
+  - intent: func_list
+  - action: utter_func_list
+
+- story: story4
+  steps:
+  - action: utter_default
+
+- story: story5
+  steps:
+  - intent: name
+  - action: utter_name
+
+- story: story6
+  steps:
+  - intent: name_bot
+  - action: utter_name_bot  
+
+- story: story7
+  steps:
+  - intent: age
+  - action: utter_age
+
+- story: story8
+  steps:
+  - intent: open_store
+  - action: utter_open_store
+
+- story: story9
+  steps:
+  - intent: discount
+  - action: utter_discount
+
+- story: story10
+  steps:
+  - intent: money
+  - action: utter_money
+
+- story: story11
+  steps:
+  - intent: receive
+  - action: utter_receive
+  - intent: ship
+  - action: utter_ship
+  - intent: fee_ship
+  - action: utter_fee_ship
+  - intent: nk_fee_ship
+  - action: utter_nk_fee_ship
+  - intent: cr_fee_ship
+  - action: utter_cr_fee_ship
+  - intent: bt_fee_ship
+  - action: utter_bt_fee_ship
+  - intent: om_fee_ship
+  - action: utter_om_fee_ship
+  - intent: tn_fee_ship
+  - action: utter_tn_fee_ship
+
+- story: dish
+  steps:
+  - intent: bestselling
+  - action: action_bestselling
+  - intent: price_high
+  - action: action_price_high
+  - intent: price_low
+  - action: action_price_low
+  - intent: price_high_cake
+  - action: action_price_high_cake
+  - intent: price_high_milk
+  - action: action_price_high_milk
+  - intent: price_low_cake
+  - action: action_price_low_cake
+  - intent: price_low_milk
+  - action: action_price_low_milk
+  - intent: order 
+  - action: utter_order
+  - intent: take_away
+  - action: utter_take_away
+
+- story: topping
+  steps:
+  - intent: topping
+  - action: utter_topping
+  - intent: topping_cake
+  - action: utter_topping_cake
+  - intent: add_topping
+  - action: utter_add_topping
+
+- story: search_dish
+  steps:
+  - intent: search_dish
+  - action: action_search_dish
